@@ -29,23 +29,18 @@ public:
     bool cargarAnunciosB(string archivo);
     bool cargarAnunciosC(string archivo);
 
-    bool agregarAnuncioAAA(string mensaje);
-    bool agregarAnuncioB(string mensaje);
-    bool agregarAnuncioC(string mensaje);
-
     Anuncio* seleccionarAnuncioAleatorio();
     Anuncio* seleccionarAnuncioAAA();
     Anuncio* seleccionarAnuncioB();
     Anuncio* seleccionarAnuncioC();
 
     void mostrarAnuncioAleatorio();
-    void mostrarEstadisticas() const;
 
     int getCantidadAAA() const { return cantidadAAA; }
     int getCantidadB() const { return cantidadB; }
     int getCantidadC() const { return cantidadC; }
     int getTotalAnuncios() const;
-    bool puedeAgregarMasAnuncios() const;
+
 };
 
 #endif

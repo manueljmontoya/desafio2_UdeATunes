@@ -100,7 +100,7 @@ bool SistemaAnuncios::cargarAnunciosB(string archivo) {
     string linea;
     getline(file, linea);
 
-    cantidadB = 0;  // ← cantidadB
+    cantidadB = 0;
     while (getline(file, linea) && cantidadB < tamañoB) {
         if (!linea.empty()) {
             anunciosB[cantidadB] = new Anuncio(linea, 'B');
@@ -134,84 +134,6 @@ bool SistemaAnuncios::cargarAnunciosC(string archivo) {
     }
 
     file.close();
-    return true;
-}
-
-
-bool SistemaAnuncios::agregarAnuncioAAA(string mensaje) {
-    if (getTotalAnuncios() >= 50) {
-        return false;
-    }
-
-    if (cantidadAAA >= tamañoAAA) {
-
-        int nuevoTamaño = tamañoAAA + 5;
-        Anuncio** nuevoArreglo = new Anuncio*[nuevoTamaño];
-
-        for (int i = 0; i < cantidadAAA; i++) {
-            nuevoArreglo[i] = anunciosAAA[i];
-        }
-
-        delete[] anunciosAAA;
-        anunciosAAA = nuevoArreglo;
-        tamañoAAA = nuevoTamaño;
-    }
-
-    anunciosAAA[cantidadAAA] = new Anuncio(mensaje, 'A');
-    cantidadAAA++;
-
-    return true;
-}
-
-bool SistemaAnuncios::agregarAnuncioB(string mensaje) {
-
-    if (getTotalAnuncios() >= 50) {
-        return false;
-    }
-
-
-    if (cantidadB >= tamañoB) {
-        int nuevoTamaño = tamañoB + 5;
-
-        Anuncio** nuevoArreglo = new Anuncio*[nuevoTamaño];
-
-        for (int i = 0; i < cantidadB; i++) {
-            nuevoArreglo[i] = anunciosB[i];
-        }
-
-        delete[] anunciosB;
-        anunciosB = nuevoArreglo;
-        tamañoB = nuevoTamaño;
-    }
-
-    anunciosB[cantidadB] = new Anuncio(mensaje, 'B');
-    cantidadB++;
-
-    return true;
-}
-
-bool SistemaAnuncios::agregarAnuncioC(string mensaje) {
-    if (getTotalAnuncios() >= 50) {
-        return false;
-    }
-
-    if (cantidadC >= tamañoC) {
-        int nuevoTamaño = tamañoC + 5;
-
-        Anuncio** nuevoArreglo = new Anuncio*[nuevoTamaño];
-
-        for (int i = 0; i < cantidadC; i++) {
-            nuevoArreglo[i] = anunciosC[i];
-        }
-
-        delete[] anunciosC;
-        anunciosC = nuevoArreglo;
-        tamañoC = nuevoTamaño;
-    }
-
-    anunciosC[cantidadC] = new Anuncio(mensaje, 'C');
-    cantidadC++;
-
     return true;
 }
 
@@ -294,19 +216,9 @@ void SistemaAnuncios::mostrarAnuncioAleatorio() {
     }
 
     cout << "=== PUBLICIDAD ===" << endl;
-    cout << "Categoría: " << anuncio->getCategoria() << endl;  // Ya es "AAA", "B" o "C"
+    cout << "Categoría: " << anuncio->getCategoria() << endl;
     cout << "Mensaje: " << anuncio->getContenido() << endl;
     cout << "==================" << endl;
-}
-
-void SistemaAnuncios::mostrarEstadisticas() const {
-    cout << "=== ESTADÍSTICAS DE ANUNCIOS ===" << endl;
-    cout << "AAA: " << cantidadAAA << " anuncios" << endl;
-    cout << "B:   " << cantidadB << " anuncios" << endl;
-    cout << "C:   " << cantidadC << " anuncios" << endl;
-    cout << "TOTAL: " << getTotalAnuncios() << "/50 anuncios" << endl;
-
-    cout << "Probabilidades: AAA(50%), B(33%), C(17%)" << endl;
 }
 
 int SistemaAnuncios::getTotalAnuncios() const {
