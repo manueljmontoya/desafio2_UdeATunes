@@ -1,7 +1,7 @@
 #include <iostream>
 #ifndef LISTAFAVORITOS_H
 #define LISTAFAVORITOS_H
-#include "Usuario.h"
+#include "usuario.h"
 #include "listacanciones.h"
 
 using namespace std;
@@ -20,6 +20,8 @@ public:
     Cancion* buscarCancion(int idCancion);
     bool eliminarCancion(int idCancion);
     void fusionarListas(const ListaFavoritos& otra);
+
+    int getCantidadCanciones()const{return canciones.getCantidad();}
 
 };
 

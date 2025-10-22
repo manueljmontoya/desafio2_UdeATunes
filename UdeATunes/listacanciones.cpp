@@ -48,11 +48,12 @@ bool ListaCanciones::agregar(Cancion *c){
 bool ListaCanciones::eliminar(int idCancion){
 
     for (int i=0; i<cantidad; i++){
-        if (canciones[i]->detId() == idCancion){
-            for(int j=i; i<cantidad-1; j++){
+        if (canciones[i]->getId() == idCancion){
+            for(int j=i; j<cantidad-1; j++){
                 canciones[j]=canciones[j+1];
             }
             cantidad--;
+            return true;
         }
     }
     return false;

@@ -2,7 +2,7 @@
 #include <string>
 #ifndef ALBUM_H
 #define ALBUM_H
-#include "listacanciones.h"
+#include "artista.h"
 
 using namespace std;
 
@@ -17,16 +17,14 @@ private:
     string rutaPortada;
     float puntuacion;
     float duracion;
-    string artista;
+    Artista artista;
 
     string generos[4];
-
-    ListaCanciones canciones;
 
 public:
 
     Album(string n,int cod, string fec,string disq, string port, float punt,
-          float dur, string art):nombre(n),codigo(cod),fecha(fec),disquera(disq),
+          float dur, Artista art):nombre(n),codigo(cod),fecha(fec),disquera(disq),
         rutaPortada(port),puntuacion(punt),duracion(dur),artista(art){}
 
 };

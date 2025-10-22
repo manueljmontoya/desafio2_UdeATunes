@@ -7,14 +7,14 @@ using namespace std;
 
 Cancion* ListaFavoritos::buscarCancion(int idCancion){
 
-   return Cancion* cancionBuscada=canciones.buscarCancion(idCancion);
+   return canciones.buscarCancion(idCancion);
 
 }
 
 bool ListaFavoritos::agregarCancion(Cancion *c){
 
     if (canciones.getCantidad()>=10000){
-        return falase;
+        return false;
     }
     return canciones.agregar(c);
 
