@@ -15,11 +15,12 @@ private:
     string ciudad;
     string pais;
     string fechaInscripcion;
+    string usuarioSiguiendo;
     ListaFavoritos* listaFavoritos;
 
 public:
     Usuario();
-    Usuario(string nick, string tipo, string ciu, string pa, string fecha);
+    Usuario(string nick, string tipo, string ciu, string pa, string fecha, string siguiendo);
     ~Usuario();
 
     string getNickname() const { return nickname; }
@@ -41,6 +42,8 @@ public:
 
     bool operator==(const Usuario& otro) const;
     friend ostream& operator<<(ostream& os, const Usuario& usuario);
+
+    void setListaFavoritos(ListaFavoritos* lista);
 };
 
 #endif

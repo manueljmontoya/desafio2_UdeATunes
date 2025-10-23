@@ -11,7 +11,7 @@ class ListaFavoritos{
 private:
 
     Usuario* propietario;
-    ListaCanciones canciones;
+    ListaCanciones canciones();
 
 public:
 
@@ -20,6 +20,8 @@ public:
     Cancion* buscarCancion(int idCancion);
     bool eliminarCancion(int idCancion);
     void fusionarListas(const ListaFavoritos& otra);
+
+    ~ListaFavoritos(){delete propietario;}
 
     int getCantidadCanciones()const{return canciones.getCantidad();}
 

@@ -15,6 +15,13 @@ Cancion* ListaCanciones::buscarCancion(int idCancion)const{
 
 }
 
+void ListaCanciones::setCapacidad(int capacidad_){
+
+    capacidad=;
+    canciones=new Cancion*[capacidad];
+
+}
+
 void ListaCanciones::redimensionar(){
 
     int nuevaCapacidad=capacidad+100;

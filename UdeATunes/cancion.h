@@ -12,16 +12,16 @@ private:
     int idCancion;
     float duracion;
     int reproducciones;
-    Creditos creditos;
+    int creditos;
     string ruta128;
     string ruta320;
     string nombre;
-    Album album;
+    int idAlbum;
 
 public:
 
-    Cancion( int id,float duracion_,int repro,Creditos credit,string ruta1,
-            string ruta2, string nombre_, Album album_):idCancion(id),duracion(duracion_),
+    Cancion( int id,float duracion_,int repro,int credit,string ruta1,
+            string ruta2, string nombre_, string album_):idCancion(id),duracion(duracion_),
         reproducciones(repro),creditos(credit),ruta128(ruta1),ruta320(ruta2),
         nombre(nombre_),album(album_){}
     void reproducir(int calidad);

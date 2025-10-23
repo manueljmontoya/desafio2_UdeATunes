@@ -14,8 +14,9 @@ private:
 
 public:
 
-    ListaCanciones():capacidad(100),cantidad(0),canciones(new Cancion*[capacidad]){}
+    ListaCanciones():capacidad(0),cantidad(0){}
     ~ListaCanciones();
+    void setCapacidad(int capacidad_);
     bool agregar(Cancion* c);
     bool eliminar(int idCancion);
     Cancion* buscarCancion(int idCancion)const;
