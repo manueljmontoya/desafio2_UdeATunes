@@ -224,7 +224,3 @@ void SistemaAnuncios::mostrarAnuncioAleatorio() {
 int SistemaAnuncios::getTotalAnuncios() const {
     return cantidadAAA + cantidadB + cantidadC;
 }
-
-bool SistemaAnuncios::puedeAgregarMasAnuncios() const {
-    return getTotalAnuncios() < 50;
-}

@@ -2,11 +2,11 @@
 #ifndef SITEMA_H
 #define SITEMA_H
 #include <string>
-#include "usuaio.h"
+#include "Usuario.h"
 #include "listacanciones.h"
 #include "cancion.h"
-#include "anuncio.h"
-#include "artista.h"
+#include "Anuncio.h"
+#include "Artista.h"
 
 class Sitema{
 

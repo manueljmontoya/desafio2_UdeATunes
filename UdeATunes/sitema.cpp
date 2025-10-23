@@ -2,7 +2,7 @@
 #include <fstream>
 #include "sitema.h"
 #include <string>
-#include "usuario.h"
+#include "Usuario.h"
 
 Sitema::Sitema() {}
 

@@ -1,7 +1,7 @@
 #include <iostream>
 #ifndef LISTAFAVORITOS_H
 #define LISTAFAVORITOS_H
-#include "usuario.h"
+#include "Usuario.h"
 #include "listacanciones.h"
 
 using namespace std;

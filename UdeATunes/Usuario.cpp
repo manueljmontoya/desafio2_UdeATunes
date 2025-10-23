@@ -1,6 +1,6 @@
 #include "Usuario.h"
-#include "ListaFavoritos.h"
-#include "Cancion.h"
+#include "listaFavoritos.h"
+#include "cancion.h"
 
 Usuario::Usuario() {
     nickname = "invitado";

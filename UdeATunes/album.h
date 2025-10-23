@@ -2,7 +2,7 @@
 #include <string>
 #ifndef ALBUM_H
 #define ALBUM_H
-#include "artista.h"
+#include "Artista.h"
 
 using namespace std;
 
