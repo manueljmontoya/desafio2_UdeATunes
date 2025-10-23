@@ -7,7 +7,7 @@
 #include <thread>
 #include <listafavoritos.h>
 
-Sistema::Sitema() {
+Sistema::Sistema() {
 
     usuarioActivo=nullptr;
     usuarios=nullptr;
@@ -195,3 +195,102 @@ void Sistema::reproducirLista(int modo){
     }
 
 }
+
+bool Sistema::login(string nickname) {
+
+    if (usuarios == nullptr || totalUsuarios == 0) {
+        cout << "No hay usuarios en el sistema" << endl;
+        return false;
+    }
+    for (int i = 0; i < totalUsuarios; i++) {
+        if (usuarios[i]->getNickname() == nickname) {
+            usuarioActivo = usuarios[i];
+            return true;
+        }
+    }
+    return false;
+}
+
+void Sistema::cerrarSesion() {
+    usuarioActivo = nullptr;
+}
+
+void Sistema::mostrarMenuLogin() {
+    int opcion;
+
+    while (true) {
+        cout << "\n--- UdeATunes ---" << endl;
+        cout << "1. Entrar" << endl;
+        cout << "2. Salir" << endl;
+        cout << "Opcion > ";
+        cin >> opcion;
+
+        if (opcion == 1) {
+            string nickname;
+            cout << "Usuario: ";
+            cin >> nickname;
+
+            if (login(nickname)) {
+                cout << "Hola " << nickname << "!" << endl;
+                mostrarMenuPrincipal();
+                break;
+            }
+        }
+        else if (opcion == 2) {
+            break;
+        }
+    }
+}
+
+void Sistema::mostrarMenuPrincipal() {
+    int opcion;
+
+    while (usuarioActivo != nullptr) {
+        cout << "\n--- UdeATunes ---" << endl;
+        cout << "Usuario: " << usuarioActivo->getNickname() << endl;
+
+        if (usuarioActivo->esPremium()) {
+            cout << "Tipo: Premium" << endl;
+        } else {
+            cout << "Tipo: Estandar" << endl;
+        }
+
+        if (usuarioActivo->esPremium()) {
+
+            cout << "1. Reproducir aleatorio" << endl;
+            cout << "2. Reproducir mis favoritos" << endl;
+            cout << "3. Cerrar sesion" << endl;
+            cout << "Opcion > ";
+            cin >> opcion;
+
+            if (opcion == 1) {
+                cout << "Reproduciendo musica aleatoria..." << endl;
+            }
+            else if (opcion == 2) {
+                cout << "Accediendo a mis favoritos..." << endl;
+            }
+            else if (opcion == 3) {
+                cerrarSesion();
+            }
+            else {
+                cout << "Opcion invalida" << endl;
+            }
+        } else {
+            cout << "1. Reproducir aleatorio" << endl;
+            cout << "2. Cerrar sesion" << endl;
+            cout << "Opcion > ";
+            cin >> opcion;
+
+            if (opcion == 1) {
+                cout << "Reproduciendo musica aleatoria..." << endl;
+            }
+            else if (opcion == 2) {
+                cerrarSesion();
+            }
+            else {
+                cout << "Opción invalida" << endl;
+            }
+        }
+    }
+}
+

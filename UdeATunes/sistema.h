@@ -27,6 +27,15 @@ public:
     void reproducirAleatorio(ListaFavoritos* lista);
     void cargarLista();
     void reproducirLista(int modo);
+
+    bool login(string nickname);
+    void cerrarSesion();
+    void mostrarMenuLogin();
+    void mostrarMenuPrincipal();
+    void mostrarMenuReproduccion();
+    void mostrarMenuFavoritos();
+
+    int leerOpcion(int min, int max);
 };
 
 #endif // SISTEMA_H

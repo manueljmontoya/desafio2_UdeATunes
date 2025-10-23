@@ -9,7 +9,7 @@ Usuario::Usuario() {
     pais = "Desconocido";
     fechaInscripcion = "01/01/2025";
     listaFavoritos = nullptr;
-    usuarioSiguiendo = ""
+    usuarioSiguiendo = "";
 }
 
 Usuario::Usuario(string nick, string tipo, string ciu, string pa, string fecha, string siguiendo) {
