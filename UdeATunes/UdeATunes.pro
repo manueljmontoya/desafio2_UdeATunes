@@ -12,7 +12,7 @@ SOURCES += \
     listacanciones.cpp \
     listafavoritos.cpp \
         main.cpp\
-    sitema.cpp
+    sistema.cpp
 
 HEADERS += \
     album.h \
@@ -24,4 +24,4 @@ HEADERS += \
     SistemaAnuncios.h\
     listacanciones.h \
     listafavoritos.h \
-    sitema.h
+    sistema.h
