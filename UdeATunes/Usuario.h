@@ -15,12 +15,12 @@ private:
     string ciudad;
     string pais;
     string fechaInscripcion;
-    string usuarioSiguiendo;
     ListaFavoritos* listaFavoritos;
+    Usuario* usuarioSeguido;
 
 public:
     Usuario();
-    Usuario(string nick, string tipo, string ciu, string pa, string fecha, string siguiendo);
+    Usuario(string nick, string tipo, string ciu, string pa, string fecha);
     ~Usuario();
 
     string getNickname() const { return nickname; }
@@ -31,19 +31,22 @@ public:
     ListaFavoritos* getListaFavoritos() { return listaFavoritos; }
 
     void setTipoMembresia(string tipo);
-
     bool esPremium() const;
-
     bool agregarAFavoritos(Cancion* cancion);
     bool eliminarDeFavoritos(int idCancion);
-    bool seguirUsuarioPremium(Usuario* usuario);
-
     int getCantidadFavoritos() const;
+
+    bool seguirUsuario(Usuario* otroUsuario);
+    bool dejarDeSeguir();
+    bool estaSiguiendoAlguien() const { return usuarioSeguido != nullptr; }
+    Usuario* getUsuarioSeguido() const { return usuarioSeguido; }
+
+    Cancion** generarListaReproduccion(int& totalCanciones);
+    void liberarListaReproduccion(Cancion** lista);
 
     bool operator==(const Usuario& otro) const;
     friend ostream& operator<<(ostream& os, const Usuario& usuario);
 
-    void setListaFavoritos(ListaFavoritos* lista);
 };
 
 #endif

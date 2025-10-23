@@ -9,10 +9,10 @@ Usuario::Usuario() {
     pais = "Desconocido";
     fechaInscripcion = "01/01/2025";
     listaFavoritos = nullptr;
-    usuarioSiguiendo = "";
+    usuarioSeguido = nullptr;
 }
 
-Usuario::Usuario(string nick, string tipo, string ciu, string pa, string fecha, string siguiendo) {
+Usuario::Usuario(string nick, string tipo, string ciu, string pa, string fecha) {
     nickname = nick;
 
     if (tipo != "estandar" && tipo != "premium") {
@@ -24,7 +24,6 @@ Usuario::Usuario(string nick, string tipo, string ciu, string pa, string fecha, 
     ciudad = ciu;
     pais = pa;
     fechaInscripcion = fecha;
-    usuarioSiguiendo = siguiendo;
 
     if (esPremium()) {
         listaFavoritos = new ListaFavoritos(this);
@@ -33,15 +32,83 @@ Usuario::Usuario(string nick, string tipo, string ciu, string pa, string fecha, 
     }
 }
 
-Usuario::~Usuario() {
-    if (listaFavoritos != nullptr) {
-        delete listaFavoritos;
+bool Usuario::seguirUsuario(Usuario* otroUsuario) {
+    if (!this->esPremium()) {
+        cout << nickname << " no es premium - no puedes seguir a otro usuario" << endl;
+        return false;
+    }
+
+    if (!otroUsuario->esPremium()) {
+        cout << otroUsuario->nickname << " no es premium - no se puede seguir" << endl;
+        return false;
+    }
+
+    if (this == otroUsuario) {
+        cout << " No puedes seguirte a ti mismo" << endl;
+        return false;
+    }
+
+    if (usuarioSeguido != nullptr) {
+        cout << "Ya estas siguiendo a " << usuarioSeguido->getNickname() << endl;
+        cout << "Debes dejar de seguirlo primero" << endl;
+        return false;
+    }
+
+    usuarioSeguido = otroUsuario;
+    cout << nickname << " ahora sigue a " << otroUsuario->getNickname() << endl;
+    return true;
+}
+
+bool Usuario::dejarDeSeguir() {
+    if (usuarioSeguido == nullptr) {
+        cout << nickname << " no está siguiendo a nadie" << endl;
+        return false;
+    }
+
+    cout << nickname << " dejó de seguir a " << usuarioSeguido->getNickname() << endl;
+    usuarioSeguido = nullptr;
+    return true;
+}
+
+Cancion** Usuario::generarListaReproduccion(int& totalCanciones) {
+
+    totalCanciones = this->getCantidadFavoritos();
+
+    if (usuarioSeguido != nullptr) {
+        totalCanciones += usuarioSeguido->getCantidadFavoritos();
+    }
+
+    if (totalCanciones == 0) {
+        cout << "No hay canciones para reproducir" << endl;
+        return nullptr;
+    }
+
+    Cancion** listaTemporal = new Cancion*[totalCanciones];
+    int indice = 0;
+
+    for (int i = 0; i < this->getCantidadFavoritos(); i++) {
+        listaTemporal[indice] = this->listaFavoritos->getCancion(i);
+        indice++;
+    }
+
+    if (usuarioSeguido != nullptr) {
+        for (int i = 0; i < usuarioSeguido->getCantidadFavoritos(); i++) {
+            listaTemporal[indice] = usuarioSeguido->listaFavoritos->getCancion(i);
+            indice++;
+        }
+    }
+
+    return listaTemporal;
+}
+
+void Usuario::liberarListaReproduccion(Cancion** lista) {
+    if (lista != nullptr) {
+        delete[] lista;
     }
 }
 
-void Usuario::setListaFavoritos(ListaFavoritos* lista){
-
-    listaFavoritos=lista;
+Usuario::~Usuario() {
+    delete listaFavoritos;
 
 }
 
@@ -91,24 +158,6 @@ bool Usuario::eliminarDeFavoritos(int idCancion) {
 
     bool resultado = listaFavoritos->eliminarCancion(idCancion);
     return resultado;
-}
-
-bool Usuario::seguirUsuarioPremium(Usuario* usuario) {
-    if (!esPremium()) {
-        return false;
-    }
-    if (listaFavoritos == nullptr) {
-        return false;
-    }
-    if (usuario == nullptr) {
-        return false;
-    }
-    if (!usuario->esPremium()) {
-        return false;
-    }
-
-    listaFavoritos->fusionarListas(*usuario->getListaFavoritos());
-    return true;
 }
 
 int Usuario::getCantidadFavoritos() const {
