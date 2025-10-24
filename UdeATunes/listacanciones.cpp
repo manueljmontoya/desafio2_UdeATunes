@@ -17,7 +17,7 @@ Cancion* ListaCanciones::buscarCancion(int idCancion)const{
 
 void ListaCanciones::setCapacidad(int capacidad_){
 
-    capacidad=;
+    capacidad=capacidad_;
     canciones=new Cancion*[capacidad];
 
 }

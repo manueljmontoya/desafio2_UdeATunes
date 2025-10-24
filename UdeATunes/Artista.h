@@ -11,9 +11,10 @@ private:
     string paisOrigen;
     int seguidores;
     int posicionTendencias;
+    string nombre;
 
 public:
-    Artista(int id, int edad, const string& pais, int seguidores, int posicion);
+    Artista(string nomb,int id, int edad, const string& pais, int seguidores, int posicion);
 
     Artista(const Artista& other) = default;
 
@@ -33,6 +34,8 @@ public:
     Artista& operator=(const Artista& other) = default;
 
     bool operator==(const Artista& other) const;
+
+    string getNombre(){return nombre;}
 };
 
 #endif

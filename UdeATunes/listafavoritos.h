@@ -11,17 +11,15 @@ class ListaFavoritos{
 private:
 
     Usuario* propietario;
-    ListaCanciones canciones();
+    ListaCanciones canciones;
 
 public:
 
-    ListaFavoritos(Usuario* u):propietario(u){}
+    ListaFavoritos(Usuario* u):propietario(u),canciones(ListaCanciones()){}
     bool agregarCancion(Cancion* c);
     Cancion* buscarCancion(int idCancion);
     bool eliminarCancion(int idCancion);
     void fusionarListas(const ListaFavoritos& otra);
-
-    ~ListaFavoritos(){delete propietario;}
 
     int getCantidadCanciones()const{return canciones.getCantidad();}
 

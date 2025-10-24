@@ -4,6 +4,7 @@ CONFIG -= app_bundle
 CONFIG -= qt
 
 SOURCES += \
+    album.cpp \
     cancion.cpp \
     Usuario.cpp\
     Artista.cpp\

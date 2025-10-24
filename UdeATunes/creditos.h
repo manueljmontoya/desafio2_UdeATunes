@@ -3,6 +3,8 @@
 #define CREDITOS_H
 #include <string>
 
+using namespace std;
+
 class Creditos{
 
 private:

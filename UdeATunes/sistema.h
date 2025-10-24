@@ -7,6 +7,7 @@
 #include "cancion.h"
 #include "Anuncio.h"
 #include "Artista.h"
+#include "SistemaAnuncios.h"
 
 class Sistema{
 
@@ -15,9 +16,9 @@ class Sistema{
     int totalUsuarios;
     ListaCanciones* canciones;
     int totalCanciones;
-    Anuncio** anuncios;
-    int totalAnuncios;
     int contadorReproducciones;
+    SistemaAnuncios* anuncios;
+    int totalAnuncios;
 
 public:
     Sistema();

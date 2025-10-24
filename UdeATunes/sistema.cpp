@@ -6,6 +6,10 @@
 #include <cstdlib>
 #include <thread>
 #include <listafavoritos.h>
+#include <listacanciones.h>
+#include <SistemaAnuncios.h>
+
+using namespace std;
 
 Sistema::Sistema() {
 
@@ -16,16 +20,17 @@ Sistema::Sistema() {
     anuncios=nullptr;
     totalAnuncios=0;
     contadorReproducciones=0;
-    ListaCanciones canciones();
+    *canciones=ListaCanciones();
+    *anuncios=SistemaAnuncios();
 
 }
 
 void Sistema::cargarDatos(){
 
-    ifstream archivo("data/usuarios.txt");
+    ifstream archivo1("data/usuarios.txt");
     string linea;
     int contadorLinea=0;
-    while (getline(archivo, linea)) {
+    while (getline(archivo1, linea)) {
         if (contadorLinea=0){
             int intLinea=stoi(linea);
             usuarios = new Usuario*[intLinea];
@@ -48,12 +53,12 @@ void Sistema::cargarDatos(){
             totalUsuarios++;
         }
     }
-    archivo.close();
+    archivo1.close();
 
-    ifstream archivo("data/canciones.txt");
-    string linea;
-    int contadorLinea=0;
-    while (getline(archivo, linea)) {
+    ifstream archivo2("data/canciones.txt");
+    linea="";
+    contadorLinea=0;
+    while (getline(archivo2, linea)) {
         if (contadorLinea=0){
             int cantidadCanciones=stoi(linea);
             canciones->setCapacidad(cantidadCanciones);
@@ -65,28 +70,30 @@ void Sistema::cargarDatos(){
             size_t pos4 = linea.find(';', pos3 + 1);
             size_t pos5 = linea.find(';', pos4 + 1);
             size_t pos6 = linea.find(';', pos5 + 1);
-            size_t pos7 = linea.find(';', pos6 + 1);
-            size_t pos8 = linea.find(';', pos7 + 1);
 
-            string idCancion = linea.substr(0, pos1);
+            string strId = linea.substr(0, pos1);
+            int id = stoi(strId);
             string nombre = linea.substr(pos1 + 1, pos2 - pos1 - 1);
-            string idAlbum = linea.substr(pos2 + 1, pos3 - pos2 - 1);
-            string duracion = linea.substr(pos3 + 1, pos4 - pos3 - 1);
+            string strIdAlbum = linea.substr(pos2 + 1, pos3 - pos2 - 1);
+            int idAlbum = stoi(strIdAlbum);
+            string strDuracion = linea.substr(pos3 + 1, pos4 - pos3 - 1);
+            float duracion = stof(strDuracion);
             string ruta1 = linea.substr(pos4 + 1, pos5 - pos4 - 1);
             string ruta2 = linea.substr(pos5 + 1, pos4 - pos5 - 1);
-            string reproducciones = linea.substr(pos6 + 1, pos5 - pos6 - 1);
-            string cantante = linea.substr(pos7 + 1, pos6 - pos7 - 1);
-            string idCreditos = linea.substr(por8 + 1);
+            string strRepro = linea.substr(pos6 + 1, pos5 - pos6 - 1);
+            int reproducciones = stoi(strRepro);
 
-            Cancion* cancionActual= new Cancion(idCancion,duracion,reproducciones,
-                                            idcreditos,ruta1,ruta2,nombre,idAlbum);
+            Cancion* cancionActual= new Cancion(id,duracion,reproducciones,ruta1,ruta2,
+                                                 nombre,idAlbum);
             bool agregada=canciones->agregar(cancionActual);
             if (agregada){
                 totalCanciones++;
             }
         }
     }
-    archivo.close();
+    archivo2.close();
+
+    anuncios->cargarAnunciosDesdeArchivos();
 
 }
 
@@ -105,7 +112,7 @@ void Sistema::reproducirAleatorio(){
     while (true) {
 
         if (calidad=1 && (contadorReproducciones%3==0)){
-            //mostrar anuncio
+            anuncios->mostrarAnuncioAleatorio();
         }
 
         for (int i = 0; i < 5; i++) {
@@ -131,7 +138,7 @@ void Sistema::reproducirAleatorio(ListaFavoritos* lista){
     while (true) {
 
         if (calidad=1 && (contadorReproducciones%3==0)){
-            //mostrar anuncio
+            anuncios->mostrarAnuncioAleatorio();
         }
 
         for (int i = 0; i < 5; i++) {
@@ -161,14 +168,14 @@ void Sistema::cargarLista(){
 
             while ((fin = linea.find(';', inicio)) != string::npos) {
                 string idCancion = linea.substr(inicio, fin - inicio);
-                int intIdCancion = toint(idCancion);
+                int intIdCancion = stoi(idCancion);
                 listaUsuario->agregarCancion(canciones->buscarCancion(intIdCancion));
                 inicio = fin + 1;
             }
 
             string ultimoIdCancion = linea.substr(inicio);
             if (!ultimoIdCancion.empty()) {
-                int intIdCancion = toint(ultimoIdCancion);
+                int intIdCancion = stoi(ultimoIdCancion);
                 listaUsuario->agregarCancion(canciones->buscarCancion(intIdCancion));
             }
         }

@@ -1,8 +1,15 @@
 #include "Artista.h"
 
-Artista::Artista(int id, int edad, const string& pais, int seguidores, int posicion)
-    : id(id), edad(edad), paisOrigen(pais), seguidores(seguidores),
-    posicionTendencias(posicion) {}
+Artista::Artista(string nomb, int id, int edad, const string& pais, int seguidores, int posicion){
+
+    nombre=nomb;
+    id=id;
+    edad=edad;
+    paisOrigen=pais;
+    seguidores=seguidores;
+    posicionTendencias=posicion;
+
+}
 
 
 int Artista::getId() const {

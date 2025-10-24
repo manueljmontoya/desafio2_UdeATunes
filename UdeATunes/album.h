@@ -17,15 +17,18 @@ private:
     string rutaPortada;
     float puntuacion;
     float duracion;
-    Artista artista;
+    int idArtista;
+    Artista* artista=nullptr;
 
     string generos[4];
 
 public:
 
-    Album(string n,int cod, string fec,string disq, string port, float punt,
-          float dur, Artista art):nombre(n),codigo(cod),fecha(fec),disquera(disq),
-        rutaPortada(port),puntuacion(punt),duracion(dur),artista(art){}
+    Album(string n,int cod, string fec,string disq, string port, float punt,float dur, int art);
+    ~Album(){delete artista;}
+    Artista* getArtista(){return artista;}
+    string getRutaPortada(){return rutaPortada;}
+    string getNombre(){return nombre;}
 
 };
 
