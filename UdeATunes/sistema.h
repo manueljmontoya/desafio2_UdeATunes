@@ -26,7 +26,6 @@ public:
     void cargarDatos();
     void reproducirAleatorio();
     void reproducirAleatorio(ListaFavoritos* lista);
-    void cargarLista();
     void reproducirLista(int modo);
 
     bool login(string nickname);

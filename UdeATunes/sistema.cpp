@@ -95,18 +95,6 @@ void Sistema::cargarDatos(){
 
     anuncios->cargarAnunciosDesdeArchivos();
 
-/*
-    if (usuarioActivo->esPremium()){
-        string seguido = usuarioActivo->getNicknameSeguido();
-
-        for (int i=0;i<totalUsuarios;i++){
-            if(usuarios[i]->getNickname() == seguido){
-                usuarioActivo->setUsuarioSeguido(usuarios[i]);
-            }
-        }
-    }
-*/
-
 }
 
 
@@ -143,41 +131,6 @@ void Sistema::reproducirAleatorio(ListaFavoritos* lista){
 
         std::this_thread::sleep_for(std::chrono::seconds(3));
     }
-
-}
-
-void Sistema::cargarLista(){
-
-    ListaFavoritos* listaUsuario = new ListaFavoritos(usuarioActivo);
-
-    ifstream archivo("data/listas_favoritos.txt");
-    string linea;
-
-    while (getline(archivo, linea)) {
-        size_t pos1 = linea.find(';');
-        string propietario = linea.substr(0, pos1);
-
-        if (propietario == usuarioActivo->getNickname()) {
-            size_t inicio = pos1 + 1;
-            size_t fin;
-
-            while ((fin = linea.find(';', inicio)) != string::npos) {
-                string idCancion = linea.substr(inicio, fin - inicio);
-                int intIdCancion = stoi(idCancion);
-                listaUsuario->agregarCancion(canciones->buscarCancion(intIdCancion));
-                inicio = fin + 1;
-            }
-
-            string ultimoIdCancion = linea.substr(inicio);
-            if (!ultimoIdCancion.empty()) {
-                int intIdCancion = stoi(ultimoIdCancion);
-                listaUsuario->agregarCancion(canciones->buscarCancion(intIdCancion));
-            }
-        }
-    }
-    archivo.close();
-
-    usuarioActivo->setListaFavoritos(listaUsuario);
 
 }
 
@@ -247,6 +200,18 @@ bool Sistema::login(string nickname) {
     for (int i = 0; i < totalUsuarios; i++) {
         if (usuarios[i]->getNickname() == nickname) {
             usuarioActivo = usuarios[i];
+
+            if (usuarioActivo->esPremium()){
+                string seguido = usuarioActivo->getNicknameSeguido();
+
+                for (int i=0;i<totalUsuarios;i++){
+                    if(usuarios[i]->getNickname() == seguido){
+                        usuarioActivo->setUsuarioSeguido(usuarios[i]);
+                    }
+                }
+                usuarioActivo->setListaFavoritos(usuarioActivo,canciones);
+            }
+
             return true;
         }
     }

@@ -1,6 +1,7 @@
 #include "Usuario.h"
 #include "listaFavoritos.h"
 #include "cancion.h"
+#include <fstream>
 
 Usuario::Usuario() {
     nickname = "invitado";
@@ -102,9 +103,38 @@ Cancion** Usuario::generarListaReproduccion(int& totalCanciones) {
     return listaTemporal;
 }
 
-void Usuario::setListaFavoritos(ListaFavoritos* lista){
+void Usuario::setListaFavoritos(Usuario* usuario, ListaCanciones* canciones){
 
-    listaFavoritos=lista;
+    ListaFavoritos* listaUsuario = new ListaFavoritos(usuario);
+
+    ifstream archivo("data/listas_favoritos.txt");
+    string linea;
+
+    while (getline(archivo, linea)) {
+        size_t pos1 = linea.find(';');
+        string propietario = linea.substr(0, pos1);
+
+        if (propietario == nickname) {
+            size_t inicio = pos1 + 1;
+            size_t fin;
+
+            while ((fin = linea.find(';', inicio)) != string::npos) {
+                string idCancion = linea.substr(inicio, fin - inicio);
+                int intIdCancion = stoi(idCancion);
+                listaUsuario->agregarCancion(canciones->buscarCancion(intIdCancion));
+                inicio = fin + 1;
+            }
+
+            string ultimoIdCancion = linea.substr(inicio);
+            if (!ultimoIdCancion.empty()) {
+                int intIdCancion = stoi(ultimoIdCancion);
+                listaUsuario->agregarCancion(canciones->buscarCancion(intIdCancion));
+            }
+        }
+    }
+    archivo.close();
+
+    listaFavoritos - listaUsuario;
 
 }
 

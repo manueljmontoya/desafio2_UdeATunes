@@ -7,6 +7,7 @@ using namespace std;
 
 class ListaFavoritos;
 class Cancion;
+class ListaCanciones;
 
 class Usuario {
 private:
@@ -42,7 +43,7 @@ public:
     bool dejarDeSeguir();
     bool estaSiguiendoAlguien() const { return usuarioSeguido != nullptr; }
     Usuario* getUsuarioSeguido() const { return usuarioSeguido; }
-    void setListaFavoritos(ListaFavoritos* lista);
+    void setListaFavoritos(Usuario* usuario, ListaCanciones* canciones);
 
     Cancion** generarListaReproduccion(int& totalCanciones);
     void liberarListaReproduccion(Cancion** lista);
