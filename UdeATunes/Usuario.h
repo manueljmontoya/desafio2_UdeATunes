@@ -16,11 +16,12 @@ private:
     string pais;
     string fechaInscripcion;
     ListaFavoritos* listaFavoritos;
+    string nicknameUsuarioSeguido;
     Usuario* usuarioSeguido;
 
 public:
     Usuario();
-    Usuario(string nick, string tipo, string ciu, string pa, string fecha);
+    Usuario(string nick, string tipo, string ciu, string pa, string fecha, string seguido);
     ~Usuario();
 
     string getNickname() const { return nickname; }
@@ -30,16 +31,18 @@ public:
     string getFechaInscripcion() const { return fechaInscripcion; }
     ListaFavoritos* getListaFavoritos() { return listaFavoritos; }
 
+    void setUsuarioSeguido(Usuario* user){usuarioSeguido=user;}
     void setTipoMembresia(string tipo);
     bool esPremium() const;
     bool agregarAFavoritos(Cancion* cancion);
     bool eliminarDeFavoritos(int idCancion);
     int getCantidadFavoritos() const;
-
+    string getNicknameSeguido(){return nicknameUsuarioSeguido;}
     bool seguirUsuario(Usuario* otroUsuario);
     bool dejarDeSeguir();
     bool estaSiguiendoAlguien() const { return usuarioSeguido != nullptr; }
     Usuario* getUsuarioSeguido() const { return usuarioSeguido; }
+    void setListaFavoritos(ListaFavoritos* lista);
 
     Cancion** generarListaReproduccion(int& totalCanciones);
     void liberarListaReproduccion(Cancion** lista);

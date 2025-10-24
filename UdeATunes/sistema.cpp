@@ -95,6 +95,16 @@ void Sistema::cargarDatos(){
 
     anuncios->cargarAnunciosDesdeArchivos();
 
+    if (usuarioActivo->esPremium()){
+        string seguido = usuarioActivo->getNicknameSeguido();
+
+        for (int i=0;i<totalUsuarios;i++){
+            if(usuarios[i]->getNickname() == seguido){
+                usuarioActivo->setUsuarioSeguido(usuarios[i]);
+            }
+        }
+    }
+
 }
 
 
@@ -109,43 +119,26 @@ void Sistema::reproducirAleatorio(){
         calidad=2;
     }
 
-    while (true) {
-
-        if (calidad=1 && (contadorReproducciones%3==0)){
+    for (int i = 0; i < 5; i++) {
+        if (calidad==1 && (contadorReproducciones % 3) == 0) {
             anuncios->mostrarAnuncioAleatorio();
         }
 
-        for (int i = 0; i < 5; i++) {
-            int indiceAleatorio = rand() % totalCanciones;
-            canciones->buscarCancion(indiceAleatorio)->reproducir(calidad);
-            contadorReproducciones++;
-        }
+        int indiceAleatorio = rand() % totalCanciones;
+        canciones->buscarCancion(indiceAleatorio)->reproducir(calidad);
+
         std::this_thread::sleep_for(std::chrono::seconds(3));
+        contadorReproducciones++;
     }
 
 }
 
 void Sistema::reproducirAleatorio(ListaFavoritos* lista){
 
-    int calidad;
-    if (usuarioActivo->getTipoMembresia() == "estandar"){
-        calidad=1;
-    }
-    else{
-        calidad=2;
-    }
+    for (int i = 0; i < 5; i++) {
+        int indiceAleatorio = rand() % (lista->getCantidadCanciones());
+        lista->buscarCancion(indiceAleatorio)->reproducir(2);
 
-    while (true) {
-
-        if (calidad=1 && (contadorReproducciones%3==0)){
-            anuncios->mostrarAnuncioAleatorio();
-        }
-
-        for (int i = 0; i < 5; i++) {
-            int indiceAleatorio = rand() % totalCanciones;
-            lista->buscarCancion(indiceAleatorio)->reproducir(calidad);
-            contadorReproducciones++;
-        }
         std::this_thread::sleep_for(std::chrono::seconds(3));
     }
 
@@ -193,12 +186,52 @@ void Sistema::reproducirLista(int modo){
         reproducirAleatorio(usuarioActivo->getListaFavoritos());
     }
     else{
-        for (int i=0; i<usuarioActivo->getListaFavoritos()->getCantidadCanciones(); i++){
-            int indiceAleatorio = rand() % totalCanciones;
-            usuarioActivo->getListaFavoritos()->buscarCancion(indiceAleatorio)->reproducir(2);
-            contadorReproducciones++;
+        int historial[6];
+        int cantidadHistorial = 0;
+        int indiceActual = 0;
+        char opcion;
+
+        while (true) {
+            cout << "\nOpciones: (1) siguiente, (2) retroceder, (3) salir → ";
+            cin >> opcion;
+
+            if (opcion == 'n') {
+                if (indiceActual >= usuarioActivo->getCantidadFavoritos()) {
+                    cout << "Fin de la lista de canciones.\n";
+                    continue;
+                }
+
+                usuarioActivo->getListaFavoritos()->buscarCancion(indiceActual)->reproducir(2);
+
+                if (cantidadHistorial < 6) {
+                    historial[cantidadHistorial] = indiceActual;
+                    cantidadHistorial++;
+                } else {
+                    for (int i = 0; i < 5; i++)
+                        historial[i] = historial[i + 1];
+                    historial[5] = indiceActual;
+                }
+
+                indiceActual++;
+                std::this_thread::sleep_for(std::chrono::seconds(3));
+            }
+
+            else if (opcion == 'b') {
+                if (cantidadHistorial <= 1) {
+                    cout << "No hay canciones anteriores.\n";
+                } else {
+                    cantidadHistorial--;
+                    indiceActual = historial[cantidadHistorial - 1];
+                    usuarioActivo->getListaFavoritos()->buscarCancion(indiceActual)->reproducir(2);
+                    std::this_thread::sleep_for(std::chrono::seconds(3));
+                }
+            }
+
+            else if (opcion == 'q') {
+                cout << "Saliendo del reproductor...\n";
+                break;
+            }
         }
-        std::this_thread::sleep_for(std::chrono::seconds(3));
     }
 
 }
@@ -227,7 +260,7 @@ void Sistema::mostrarMenuLogin() {
 
     while (true) {
         cout << "\n--- UdeATunes ---" << endl;
-        cout << "1. Entrar" << endl;
+        cout << "1. Entrar a la plataforma" << endl;
         cout << "2. Salir" << endl;
         cout << "Opcion > ";
         cin >> opcion;
@@ -272,9 +305,15 @@ void Sistema::mostrarMenuPrincipal() {
 
             if (opcion == 1) {
                 cout << "Reproduciendo musica aleatoria..." << endl;
+                reproducirAleatorio();
             }
             else if (opcion == 2) {
                 cout << "Accediendo a mis favoritos..." << endl;
+                cout << "1. Reproducir lista en modo aleatorio" << endl;
+                cout << "2. Reproducir lista en orden" << endl;
+                cout << "Opcion > ";
+                cin >> opcion;
+                reproducirLista(opcion);
             }
             else if (opcion == 3) {
                 cerrarSesion();
@@ -290,6 +329,7 @@ void Sistema::mostrarMenuPrincipal() {
 
             if (opcion == 1) {
                 cout << "Reproduciendo musica aleatoria..." << endl;
+                reproducirAleatorio();
             }
             else if (opcion == 2) {
                 cerrarSesion();

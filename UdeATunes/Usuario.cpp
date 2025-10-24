@@ -12,8 +12,9 @@ Usuario::Usuario() {
     usuarioSeguido = nullptr;
 }
 
-Usuario::Usuario(string nick, string tipo, string ciu, string pa, string fecha) {
+Usuario::Usuario(string nick, string tipo, string ciu, string pa, string fecha, string seguido) {
     nickname = nick;
+    nicknameUsuarioSeguido=seguido;
 
     if (tipo != "estandar" && tipo != "premium") {
         tipoMembresia = "estandar";
@@ -87,18 +88,24 @@ Cancion** Usuario::generarListaReproduccion(int& totalCanciones) {
     int indice = 0;
 
     for (int i = 0; i < this->getCantidadFavoritos(); i++) {
-        listaTemporal[indice] = this->listaFavoritos->getCancion(i);
+        listaTemporal[indice] = this->listaFavoritos->buscarCancion(i);
         indice++;
     }
 
     if (usuarioSeguido != nullptr) {
         for (int i = 0; i < usuarioSeguido->getCantidadFavoritos(); i++) {
-            listaTemporal[indice] = usuarioSeguido->listaFavoritos->getCancion(i);
+            listaTemporal[indice] = usuarioSeguido->listaFavoritos->buscarCancion(i);
             indice++;
         }
     }
 
     return listaTemporal;
+}
+
+void Usuario::setListaFavoritos(ListaFavoritos* lista){
+
+    listaFavoritos=lista;
+
 }
 
 void Usuario::liberarListaReproduccion(Cancion** lista) {
