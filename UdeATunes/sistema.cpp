@@ -20,8 +20,8 @@ Sistema::Sistema() {
     anuncios=nullptr;
     totalAnuncios=0;
     contadorReproducciones=0;
-    *canciones=ListaCanciones();
-    *anuncios=SistemaAnuncios();
+    canciones = new ListaCanciones();
+    anuncios = new SistemaAnuncios();
 
 }
 
@@ -29,9 +29,9 @@ void Sistema::cargarDatos(){
 
     ifstream archivo1("data/usuarios.txt");
     string linea;
-    int contadorLinea=0;
+    int contadorLinea = 0;
     while (getline(archivo1, linea)) {
-        if (contadorLinea=0){
+        if (contadorLinea == 0){
             int intLinea=stoi(linea);
             usuarios = new Usuario*[intLinea];
         }
@@ -59,7 +59,7 @@ void Sistema::cargarDatos(){
     linea="";
     contadorLinea=0;
     while (getline(archivo2, linea)) {
-        if (contadorLinea=0){
+        if (contadorLinea == 0){
             int cantidadCanciones=stoi(linea);
             canciones->setCapacidad(cantidadCanciones);
         }
@@ -95,6 +95,7 @@ void Sistema::cargarDatos(){
 
     anuncios->cargarAnunciosDesdeArchivos();
 
+/*
     if (usuarioActivo->esPremium()){
         string seguido = usuarioActivo->getNicknameSeguido();
 
@@ -104,6 +105,7 @@ void Sistema::cargarDatos(){
             }
         }
     }
+*/
 
 }
 
@@ -189,13 +191,13 @@ void Sistema::reproducirLista(int modo){
         int historial[6];
         int cantidadHistorial = 0;
         int indiceActual = 0;
-        char opcion;
+        int opcion;
 
         while (true) {
             cout << "\nOpciones: (1) siguiente, (2) retroceder, (3) salir → ";
             cin >> opcion;
 
-            if (opcion == 'n') {
+            if (opcion == 1) {
                 if (indiceActual >= usuarioActivo->getCantidadFavoritos()) {
                     cout << "Fin de la lista de canciones.\n";
                     continue;
@@ -216,7 +218,7 @@ void Sistema::reproducirLista(int modo){
                 std::this_thread::sleep_for(std::chrono::seconds(3));
             }
 
-            else if (opcion == 'b') {
+            else if (opcion == 2) {
                 if (cantidadHistorial <= 1) {
                     cout << "No hay canciones anteriores.\n";
                 } else {
@@ -227,7 +229,7 @@ void Sistema::reproducirLista(int modo){
                 }
             }
 
-            else if (opcion == 'q') {
+            else if (opcion == 3) {
                 cout << "Saliendo del reproductor...\n";
                 break;
             }
@@ -259,25 +261,27 @@ void Sistema::mostrarMenuLogin() {
     int opcion;
 
     while (true) {
-        cout << "\n--- UdeATunes ---" << endl;
-        cout << "1. Entrar a la plataforma" << endl;
-        cout << "2. Salir" << endl;
-        cout << "Opcion > ";
+        cout << "\n=== UdeATunes ===" << endl;
+        cout << " 1. Ingresar a la plataforma" << endl;
+        cout << " 2. Salir del sistema" << endl;
+        cout << "Opcion: ";
         cin >> opcion;
 
         if (opcion == 1) {
             string nickname;
-            cout << "Usuario: ";
+            cout << "Ingrese su nickname: ";
             cin >> nickname;
 
             if (login(nickname)) {
-                cout << "Hola " << nickname << "!" << endl;
                 mostrarMenuPrincipal();
-                break;
             }
         }
         else if (opcion == 2) {
+            cout << "¡Hasta pronto!" << endl;
             break;
+        }
+        else {
+            cout << "Opcion invalida." << endl;
         }
     }
 }
@@ -286,7 +290,7 @@ void Sistema::mostrarMenuPrincipal() {
     int opcion;
 
     while (usuarioActivo != nullptr) {
-        cout << "\n--- UdeATunes ---" << endl;
+        cout << "\n=== UdeATunes ===" << endl;
         cout << "Usuario: " << usuarioActivo->getNickname() << endl;
 
         if (usuarioActivo->esPremium()) {
@@ -297,10 +301,10 @@ void Sistema::mostrarMenuPrincipal() {
 
         if (usuarioActivo->esPremium()) {
 
-            cout << "1. Reproducir aleatorio" << endl;
-            cout << "2. Reproducir mis favoritos" << endl;
-            cout << "3. Cerrar sesion" << endl;
-            cout << "Opcion > ";
+            cout << " 1. Reproducir aleatorio" << endl;
+            cout << " 2. Reproducir mis favoritos" << endl;
+            cout << " 3. Cerrar sesion" << endl;
+            cout << "Opcion: ";
             cin >> opcion;
 
             if (opcion == 1) {
@@ -308,12 +312,7 @@ void Sistema::mostrarMenuPrincipal() {
                 reproducirAleatorio();
             }
             else if (opcion == 2) {
-                cout << "Accediendo a mis favoritos..." << endl;
-                cout << "1. Reproducir lista en modo aleatorio" << endl;
-                cout << "2. Reproducir lista en orden" << endl;
-                cout << "Opcion > ";
-                cin >> opcion;
-                reproducirLista(opcion);
+                mostrarMenuFavoritos();
             }
             else if (opcion == 3) {
                 cerrarSesion();
@@ -324,11 +323,10 @@ void Sistema::mostrarMenuPrincipal() {
         } else {
             cout << "1. Reproducir aleatorio" << endl;
             cout << "2. Cerrar sesion" << endl;
-            cout << "Opcion > ";
+            cout << "Opcion: ";
             cin >> opcion;
 
             if (opcion == 1) {
-                cout << "Reproduciendo musica aleatoria..." << endl;
                 reproducirAleatorio();
             }
             else if (opcion == 2) {
@@ -341,3 +339,169 @@ void Sistema::mostrarMenuPrincipal() {
     }
 }
 
+
+void Sistema::mostrarMenuFavoritos() {
+    int opcion;
+    bool volver = false;
+
+    while (!volver) {
+        cout << "=== Mi Lista de Favoritos ===" << endl;
+        cout << " 1. Editar mi lista de favoritos" << endl;
+        cout << " 2. Seguir otra lista de favoritos" << endl;
+        cout << " 3. Ejecutar mi lista de favoritos" << endl;
+        cout << " 4. Volver al menú principal" << endl;
+        cout << "Opcion: ";
+        cin >> opcion;
+
+        if (opcion == 1) {
+            menuEditarFavoritos();
+        }
+        else if (opcion == 2) {
+            seguirListaFavoritos();
+        }
+        else if (opcion == 3) {
+            menuEjecutarFavoritos();
+        }
+        else if (opcion == 4) {
+            volver = true;
+        }
+        else {
+            cout << "Opcion invalida." << endl;
+        }
+    }
+}
+
+void Sistema::menuEditarFavoritos() {
+    int opcion;
+    bool volver = false;
+
+    while (!volver) {
+        cout << "=== Editar Mi Lista de Favoritos ===" << endl;
+        cout << " 1. Agregar canción por ID" << endl;
+        cout << " 2. Eliminar canción por ID" << endl;
+        cout << " 3. Volver" << endl;
+        cout << "Opcion: ";
+        cin >> opcion;
+
+        if (opcion == 1) {
+            string idCancion;
+            cout << "Ingrese el ID de la cancion: ";
+            cin >> idCancion;
+            agregarFavorito(idCancion);
+        }
+        else if (opcion == 2) {
+            string idCancion;
+            cout << "Ingrese el ID de la cancion a eliminar: ";
+            cin >> idCancion;
+            eliminarFavorito(idCancion);
+        }
+        else if (opcion == 3) {
+            volver = true;
+        }
+        else {
+            cout << "Opcion invalida." << endl;
+        }
+    }
+}
+
+void Sistema::menuEjecutarFavoritos() {
+    int opcion;
+    bool volver = false;
+
+    while (!volver) {
+        cout << "\n=== Ejecutar Mi Lista de Favoritos ===" << endl;
+        cout << "¿Como desea reproducir?" << endl;
+        cout << " 1. Orden original" << endl;
+        cout << " 2. Orden aleatorio" << endl;
+        cout << " 3. Volver" << endl;
+        cout << "Opcion: ";
+        cin >> opcion;
+
+        if (opcion == 1) {
+            reproducirLista(2);
+            volver = true;
+        }
+        else if (opcion == 2) {
+            reproducirLista(1);
+            volver = true;
+        }
+        else if (opcion == 3) {
+            volver = true;
+        }
+        else {
+            cout << "Opcion invalida." << endl;
+        }
+    }
+}
+
+void Sistema::seguirListaFavoritos() {
+    string nickname;
+    cout << "=== Seguir Lista de Favoritos ===" << endl;
+    cout << "Ingrese el nickname del usuario a seguir: ";
+    cin >> nickname;
+
+    if (seguirListaUsuario(nickname)) {
+        cout << "Ahora sigues la lista de " << nickname << endl;
+    } else {
+        cout << "Error: No se pudo seguir la lista de " << nickname << endl;
+    }
+}
+
+void Sistema::agregarFavorito(string idCancion) {
+    if (!usuarioActivo->esPremium()) {
+        cout << "Error: Solo usuarios premium pueden agregar favoritos" << endl;
+        return;
+    }
+
+    try {
+        int id = stoi(idCancion);
+        Cancion* cancion = canciones->buscarCancion(id);
+
+        if (cancion == nullptr) {
+            cout << "Error: Cancion con ID " << id << " no encontrada." << endl;
+            return;
+        }
+
+        if (usuarioActivo->agregarAFavoritos(cancion)) {
+            cout << "Cancion agregada a favoritos." << endl;
+        } else {
+            cout << "Error: Cancion ya esta en favoritos" << endl;
+        }
+    } catch (...) {
+        cout << "Error: ID invalido" << endl;
+    }
+}
+
+void Sistema::eliminarFavorito(string idCancion) {
+    if (!usuarioActivo->esPremium()) {
+        cout << "Error: Solo usuarios premium pueden eliminar favoritos" << endl;
+        return;
+    }
+
+    try {
+        int id = stoi(idCancion);
+
+        if (usuarioActivo->eliminarDeFavoritos(id)) {
+            cout << "Cancion eliminada de favoritos." << endl;
+        } else {
+            cout << "Error: la cancion no fue encontrada en favoritos" << endl;
+        }
+    } catch (...) {
+        cout << "Error: ID invalido" << endl;
+    }
+}
+
+bool Sistema::seguirListaUsuario(string nickname) {
+    for (int i = 0; i < totalUsuarios; i++) {
+        if (usuarios[i]->getNickname() == nickname) {
+            return usuarioActivo->seguirUsuario(usuarios[i]);
+        }
+    }
+    cout << "Usuario '" << nickname << "' no encontrado." << endl;
+    return false;
+}
+
+void Sistema::ejecutar() {
+    cargarDatos();
+    mostrarMenuLogin();
+}

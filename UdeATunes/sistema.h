@@ -35,6 +35,12 @@ public:
     void mostrarMenuPrincipal();
     void mostrarMenuReproduccion();
     void mostrarMenuFavoritos();
+    void menuEditarFavoritos();
+    void menuEjecutarFavoritos();
+    void seguirListaFavoritos();
+    void agregarFavorito(string idCancion);
+    void eliminarFavorito(string idCancion);
+    bool seguirListaUsuario(string nickname);
 
     int leerOpcion(int min, int max);
 };

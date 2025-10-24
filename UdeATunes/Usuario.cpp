@@ -183,7 +183,7 @@ bool Usuario::operator==(const Usuario& otro) const {
 }
 
 ostream& operator<<(ostream& os, const Usuario& usuario) {
-    // Mostrar información básica
+
     os << "Usuario: " << usuario.nickname;
     os << " | Tipo: " << usuario.tipoMembresia;
     os << " | Ciudad: " << usuario.ciudad;

@@ -4,6 +4,7 @@ CONFIG -= app_bundle
 CONFIG -= qt
 
 SOURCES += \
+    Metricas.cpp \
     album.cpp \
     cancion.cpp \
     Usuario.cpp\
@@ -16,6 +17,7 @@ SOURCES += \
     sistema.cpp
 
 HEADERS += \
+    Metricas.h \
     album.h \
     cancion.h \
     creditos.h \

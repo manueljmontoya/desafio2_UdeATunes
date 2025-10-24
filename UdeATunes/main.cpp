@@ -1,6 +1,7 @@
-#include <iostream>
-using namespace std;
+#include "sistema.h"
 
-int main(){
+int main() {
+    Sistema sistema;
+    sistema.ejecutar();
     return 0;
 }
