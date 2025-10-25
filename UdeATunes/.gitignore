@@ -1,0 +1,20 @@
+# Archivos de usuario de Qt Creator (configuración local)
+*.pro.user
+*.pro.user.*
+*.qmake.stash
+
+# Carpetas de compilación (Qt Creator suele generar con nombres distintos)
+build*/
+build-*/
+debug/
+release/
+
+# Archivos binarios y temporales
+*.o
+*.obj
+*.exe
+*.dll
+*.log
+*.pdb
+*.cache
+*.tmp
