@@ -1,0 +1,21 @@
+20
+Juan_play20001_gonzales;premium;Barrancabermeja;Colombia;12/09/2022;aleja_cat95
+nani_cutesi88;estandar;Madrid,Espana;23/11/2020;no_aplica
+martin_rockz77;premium;Buenos Aires;Argentina;05/04/2021;juan_play20001_gonzales
+sofia_azul_13;estandar;Medellin;Colombia;17/06/2023;no_aplica
+lucho_gamerx;premium;Santiago;Chile;22/08/2022;martin_rockz77
+vale_star99;estandar;Lima;Peru;14/12/2020;no_aplica
+dani_beats21;premium;Bogota;Colombia;01/03/2023;lucho_gamerx
+caro_pinkmoon;estandar;Cali;Colombia;09/07/2021;no_aplica
+tomas_beatx;premium;Quito;Ecuador;26/01/2022;dani_beats21
+angie_lover25;estandar;Guadalajara;Mexico;03/09/2023;no_aplica
+leo_artesano;premium;Cusco;Peru;11/10/2022;tomas_beatx
+nora_sunset;estandar;Sevilla;Espana;28/02/2021;no_aplica
+camilo_wave09;premium;Manizales;Colombia;15/11/2021;leo_artesano
+emilia_moonrise;estandar;Buenos Aires;Argentina;30/03/2024;no_aplica
+fabian_code07;premium;Caracas;Venezuela;08/12/2020;camilo_wave09
+isabella_flow;estandar;Santiago;Chile;02/06/2023;no_aplica
+raul_gtr92;premium;Montevideo;Uruguay;19/01/2022;fabian_code07
+marian_blossom;estandar;Bogota;Colombia;25/05/2023;no_aplica
+nico_devx;premium;Lima;Peru;07/07/2021;raul_gtr92
+paty_lunaria;estandar;Ciudad de Mexico;Mexico;04/04/2024;no_aplica

@@ -1,0 +1,11 @@
+release/Metricas.o
+release/album.o
+release/cancion.o
+release/Usuario.o
+release/Artista.o
+release/Anuncio.o
+release/SistemaAnuncios.o
+release/listacanciones.o
+release/listafavoritos.o
+release/main.o
+release/sistema.o

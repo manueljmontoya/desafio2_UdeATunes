@@ -1,0 +1,18 @@
+00001;Tigresa del Oriente;78;Peru;540000;88
+00002;Jose Jose;71;Mexico;980000;15
+00003;Rocio Durcal;61;Espana;870000;22
+00004;Mana;35;Mexico;2500000;30
+00005;Alejandro Sanz;55;Espana;3100000;12
+00006;Luis Miguel;54;Mexico;4200000;10
+00007;Celia Cruz;77;Cuba;2600000;25
+00008;Los Fabulosos Cadillacs;40;Argentina;1800000;44
+00009;Jesse y Joy;33;Mexico;2900000;35
+00010;Danny Ocean;31;Venezuela;2100000;48
+00011;Julieta Venegas;52;Mexico;1500000;40
+00012;Soda Stereo;39;Argentina;3300000;20
+00013;Shakira;47;Colombia;70000000;1
+00014;Carlos Baute;49;Venezuela;950000;55
+00015;Cafe Tacvba;37;Mexico;2000000;33
+00016;Carlos Vives;63;Colombia;3100000;18
+00017;Marc Anthony;56;Puerto Rico;2800000;14
+00018;Thalia;53;Mexico;2300000;38

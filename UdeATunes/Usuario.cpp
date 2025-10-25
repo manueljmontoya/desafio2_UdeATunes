@@ -134,7 +134,7 @@ void Usuario::setListaFavoritos(Usuario* usuario, ListaCanciones* canciones){
     }
     archivo.close();
 
-    listaFavoritos - listaUsuario;
+    listaFavoritos = listaUsuario;
 
 }
 
@@ -145,6 +145,83 @@ void Usuario::liberarListaReproduccion(Cancion** lista) {
 }
 
 Usuario::~Usuario() {
+
+    string linea;
+
+    ifstream inUsuarios("data/usuarios.txt");
+    ofstream tempUsuarios("data/usuarios_temp.txt");
+
+    while (getline(inUsuarios, linea)) {
+        size_t pos1 = 0, pos2 = 0;
+        string campos[6];
+        int i = 0;
+
+        while (i < 5 && (pos2 = linea.find(';', pos1)) != string::npos) {
+            campos[i] = linea.substr(pos1, pos2 - pos1);
+            pos1 = pos2 + 1;
+            i++;
+        }
+        campos[i] = linea.substr(pos1);
+
+        if (campos[0] == nickname) {
+            campos[5] = nicknameUsuarioSeguido;
+        }
+
+        tempUsuarios << campos[0] << ";" << campos[1] << ";" << campos[2] << ";"
+                     << campos[3] << ";" << campos[4] << ";" << campos[5] << "\n";
+    }
+
+    inUsuarios.close();
+    tempUsuarios.close();
+
+    remove("data/usuarios.txt");
+    rename("data/usuarios_temp.txt", "data/usuarios.txt");
+
+
+    ifstream inListas("data/listas_favoritos.txt");
+    ofstream tempListas("data/listas_favoritos_temp.txt");
+
+    bool listaEncontrada = false;
+    while (getline(inListas, linea)) {
+        size_t pos = linea.find(';');
+        string nickLista = linea.substr(0, pos);
+
+        if (nickLista == nickname) {
+            tempListas << nickname << ";";
+
+            int total = listaFavoritos->getCantidadCanciones();
+            for (int i = 0; i < total; i++) {
+                tempListas << listaFavoritos->getCancion(i)->getId();
+                if (i < total - 1)
+                    tempListas << ";";
+            }
+            tempListas << "\n";
+
+            listaEncontrada = true;
+        } else {
+            tempListas << linea << "\n";
+        }
+    }
+
+    if (!listaEncontrada) {
+        tempListas << nickname << ";";
+
+        int total = listaFavoritos->getCantidadCanciones();
+        for (int i = 0; i < total; i++) {
+            tempListas << listaFavoritos->getCancion(i)->getId();
+            if (i < total - 1)
+                tempListas << ";";
+        }
+        tempListas << "\n";
+    }
+
+
+    inListas.close();
+    tempListas.close();
+
+    remove("data/listas_favoritos.txt");
+    rename("data/listas_favoritos_temp.txt", "data/listas_favoritos.txt");
+
     delete listaFavoritos;
 
 }

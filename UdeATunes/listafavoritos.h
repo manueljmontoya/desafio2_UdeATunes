@@ -20,6 +20,7 @@ public:
     Cancion* buscarCancion(int idCancion);
     bool eliminarCancion(int idCancion);
     void fusionarListas(const ListaFavoritos& otra);
+    Cancion* getCancion(int i);
 
     int getCantidadCanciones()const{return canciones.getCantidad();}
 

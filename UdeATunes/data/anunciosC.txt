@@ -1,0 +1,8 @@
+7
+C: App del mes - Descarga nuestra aplicacion movil y recibe beneficios exclusivos. Actualizaciones constantes y soporte tecnico.
+C: eBooks gratis por 30 dias - Acceso ilimitado a nuestra biblioteca digital. Mas de 10,000 titulos disponibles.
+C: Curso Online de Marketing Digital - 50 horas de video, certificacion internacional, comunidad exclusiva, mentorias en vivo y acceso vitalicio.
+C: Suscribete a nuestro canal de YouTube - Tutoriales semanales, reviews de productos, unboxings exclusivos y sorteos mensuales para suscriptores.
+C: Podcast Tech News - Episodio especial: Inteligencia Artificial en 2024. Entrevistas con expertos, analisis de tendencias y predicciones.
+C: Webinar gratuito: Transformacion Digital para PyMEs - Aprende estrategias practicas para digitalizar tu negocio. Cupos limitados.
+C: Blog nuevo post: Guia completa de ciberseguridad para usuarios - Protege tus datos y dispositivos con estos consejos practicos.

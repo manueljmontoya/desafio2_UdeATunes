@@ -1,0 +1,21 @@
+20
+000000000;Hombre de madera;00;3.25;audios/tigresa_del_oriente/Fiesta_felina/hombre_de_madera_128.ogg;audios/tigresa_del_oriente/Fiesta_felina/hombre_de_madera_320.ogg;70
+111111111;Lo dudo;11;4.25;audios/Jose_jose/secretos/lo_dudo_128.ogg;audios/Jose_jose/secretos/lo_dudo_128.ogg;105
+222222222;Amor eterno;22;5.10;audios/Rocio_Durcal/grandes_exitos/amor_eterno_128.ogg;audios/Rocio_Durcal/grandes_exitos/amor_eterno_320.ogg;88
+333333333;Mariposa traicionera;33;4.02;audios/Maná/revolucion/mariposa_traicionera_128.ogg;audios/Maná/revolucion/mariposa_traicionera_320.ogg;95
+444444444;Corazón partío;44;4.35;audios/Alejandro_Sanz/mas/corazon_partio_128.ogg;audios/Alejandro_Sanz/mas/corazon_partio_320.ogg;120
+555555555;Ojos españoles;55;3.50;audios/Luis_Miguel/romances/ojos_espanoles_128.ogg;audios/Luis_Miguel/romances/ojos_espanoles_320.ogg;78
+666666666;Rayando el sol;66;3.45;audios/Maná/donde_jugaran_los_niños/rayando_el_sol_128.ogg;audios/Maná/donde_jugaran_los_niños/rayando_el_sol_320.ogg;110
+777777777;La vida es un carnaval;77;4.12;audios/Celia_Cruz/latina/la_vida_es_un_carnaval_128.ogg;audios/Celia_Cruz/latina/la_vida_es_un_carnaval_320.ogg;130
+888888888;Matador;88;4.00;audios/Los_Fabulosos_Cadillacs/el_leon/matador_128.ogg;audios/Los_Fabulosos_Cadillacs/el_leon/matador_320.ogg;115
+999999999;Llorar;99;3.58;audios/Jesse_y_Joy/llorar_128.ogg;audios/Jesse_y_Joy/llorar_320.ogg;90
+101010101;Me rehúso;10;3.34;audios/Danny_Ocean/54plus/me_rehuso_128.ogg;audios/Danny_Ocean/54plus/me_rehuso_320.ogg;102
+121212121;Limón y sal;12;3.21;audios/Julieta_Venegas/femenino/limon_y_sal_128.ogg;audios/Julieta_Venegas/femenino/limon_y_sal_320.ogg;90
+131313131;De música ligera;13;4.09;audios/Soda_Stereo/comfort_y_musica/de_musica_ligera_128.ogg;audios/Soda_Stereo/comfort_y_musica/de_musica_ligera_320.ogg;115
+141414141;La bicicleta;14;3.48;audios/Shakira/vallenato/la_bicicleta_128.ogg;audios/Shakira/vallenato/la_bicicleta_320.ogg;108
+151515151;Colgando en tus manos;15;4.24;audios/Carlos_Baute/romantico/colgando_en_tus_manos_128.ogg;audios/Carlos_Baute/romantico/colgando_en_tus_manos_320.ogg;96
+161616161;Mi persona favorita;16;3.50;audios/Alejandro_Sanz/mi_persona_favorita_128.ogg;audios/Alejandro_Sanz/mi_persona_favorita_320.ogg;100
+171717171;Eres;17;3.56;audios/Cafe_Tacvba/cuatro_caminos/eres_128.ogg;audios/Cafe_Tacvba/cuatro_caminos/eres_320.ogg;92
+181818181;Robarte un beso;18;3.10;audios/Carlos_Vives/pop/robarte_un_beso_128.ogg;audios/Carlos_Vives/pop/robarte_un_beso_320.ogg;105
+191919191;Tu amor es mi piel;19;4.03;audios/Marc_Anthony/ballads/tu_amor_es_mi_piel_128.ogg;audios/Marc_Anthony/ballads/tu_amor_es_mi_piel_320.ogg;88
+202020202;Lento;20;3.40;audios/Thaliapop/lento_128.ogg;audios/Thalia/pop/lento_320.ogg;98

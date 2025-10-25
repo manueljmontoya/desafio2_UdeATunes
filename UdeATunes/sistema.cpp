@@ -28,12 +28,16 @@ Sistema::Sistema() {
 void Sistema::cargarDatos(){
 
     ifstream archivo1("data/usuarios.txt");
+    if (!archivo1.is_open()) {
+        cout << "Error abriendo archivos de usuarios." << endl;
+    }
     string linea;
     int contadorLinea = 0;
     while (getline(archivo1, linea)) {
         if (contadorLinea == 0){
             int intLinea=stoi(linea);
             usuarios = new Usuario*[intLinea];
+            contadorLinea++;
         }
         else{
             size_t pos1 = linea.find(';');
@@ -62,6 +66,7 @@ void Sistema::cargarDatos(){
         if (contadorLinea == 0){
             int cantidadCanciones=stoi(linea);
             canciones->setCapacidad(cantidadCanciones);
+            contadorLinea++;
         }
         else{
             size_t pos1 = linea.find(';');
@@ -115,7 +120,7 @@ void Sistema::reproducirAleatorio(){
         }
 
         int indiceAleatorio = rand() % totalCanciones;
-        canciones->buscarCancion(indiceAleatorio)->reproducir(calidad);
+        canciones->getCancion(indiceAleatorio)->reproducir(calidad);
 
         std::this_thread::sleep_for(std::chrono::seconds(3));
         contadorReproducciones++;
@@ -127,7 +132,7 @@ void Sistema::reproducirAleatorio(ListaFavoritos* lista){
 
     for (int i = 0; i < 5; i++) {
         int indiceAleatorio = rand() % (lista->getCantidadCanciones());
-        lista->buscarCancion(indiceAleatorio)->reproducir(2);
+        lista->getCancion(indiceAleatorio)->reproducir(2);
 
         std::this_thread::sleep_for(std::chrono::seconds(3));
     }
@@ -156,7 +161,7 @@ void Sistema::reproducirLista(int modo){
                     continue;
                 }
 
-                usuarioActivo->getListaFavoritos()->buscarCancion(indiceActual)->reproducir(2);
+                usuarioActivo->getListaFavoritos()->getCancion(indiceActual)->reproducir(2);
 
                 if (cantidadHistorial < 6) {
                     historial[cantidadHistorial] = indiceActual;
@@ -177,7 +182,7 @@ void Sistema::reproducirLista(int modo){
                 } else {
                     cantidadHistorial--;
                     indiceActual = historial[cantidadHistorial - 1];
-                    usuarioActivo->getListaFavoritos()->buscarCancion(indiceActual)->reproducir(2);
+                    usuarioActivo->getListaFavoritos()->getCancion(indiceActual)->reproducir(2);
                     std::this_thread::sleep_for(std::chrono::seconds(3));
                 }
             }

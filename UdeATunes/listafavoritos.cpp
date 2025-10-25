@@ -20,6 +20,12 @@ bool ListaFavoritos::agregarCancion(Cancion *c){
 
 }
 
+Cancion* ListaFavoritos::getCancion(int i){
+
+    return canciones.getCancion(i);
+
+}
+
 bool ListaFavoritos::eliminarCancion(int idCancion){
 
     return canciones.eliminar(idCancion);
