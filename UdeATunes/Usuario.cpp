@@ -72,35 +72,31 @@ bool Usuario::dejarDeSeguir() {
     return true;
 }
 
-Cancion** Usuario::generarListaReproduccion(int& totalCanciones) {
+void Usuario::generarListaReproduccion(Usuario* usuario) {
 
-    totalCanciones = this->getCantidadFavoritos();
+    int totalCanciones = this->getCantidadFavoritos();
 
     if (usuarioSeguido != nullptr) {
         totalCanciones += usuarioSeguido->getCantidadFavoritos();
     }
 
-    if (totalCanciones == 0) {
-        cout << "No hay canciones para reproducir" << endl;
-        return nullptr;
-    }
-
-    Cancion** listaTemporal = new Cancion*[totalCanciones];
+    ListaFavoritos* listaTemporal = new ListaFavoritos(usuario);
+    listaTemporal->setCapacidad(totalCanciones);
     int indice = 0;
 
     for (int i = 0; i < this->getCantidadFavoritos(); i++) {
-        listaTemporal[indice] = this->listaFavoritos->buscarCancion(i);
+        listaTemporal->agregarCancion(listaFavoritos->buscarCancion(i));
         indice++;
     }
 
     if (usuarioSeguido != nullptr) {
         for (int i = 0; i < usuarioSeguido->getCantidadFavoritos(); i++) {
-            listaTemporal[indice] = usuarioSeguido->listaFavoritos->buscarCancion(i);
+            listaTemporal->agregarCancion(usuarioSeguido->listaFavoritos->buscarCancion(i));
             indice++;
         }
     }
 
-    return listaTemporal;
+    listaFavoritos=listaTemporal;
 }
 
 void Usuario::setListaFavoritos(Usuario* usuario, ListaCanciones* canciones){
@@ -114,8 +110,14 @@ void Usuario::setListaFavoritos(Usuario* usuario, ListaCanciones* canciones){
         size_t pos1 = linea.find(';');
         string propietario = linea.substr(0, pos1);
 
-        if (propietario == nickname) {
-            size_t inicio = pos1 + 1;
+        if (propietario == this->nickname) {
+            size_t pos2 = linea.find(';', pos1 + 1);
+            string strCantidad = linea.substr(pos1 + 1, pos2 - pos1 - 1);
+            int cantidadCanciones = stoi(strCantidad);
+
+            listaUsuario->setCapacidad(cantidadCanciones);
+
+            size_t inicio = pos2 + 1;
             size_t fin;
 
             while ((fin = linea.find(';', inicio)) != string::npos) {
@@ -133,6 +135,7 @@ void Usuario::setListaFavoritos(Usuario* usuario, ListaCanciones* canciones){
         }
     }
     archivo.close();
+
 
     listaFavoritos = listaUsuario;
 

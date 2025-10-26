@@ -45,7 +45,7 @@ public:
     Usuario* getUsuarioSeguido() const { return usuarioSeguido; }
     void setListaFavoritos(Usuario* usuario, ListaCanciones* canciones);
 
-    Cancion** generarListaReproduccion(int& totalCanciones);
+    void generarListaReproduccion(Usuario* usuario);
     void liberarListaReproduccion(Cancion** lista);
 
     bool operator==(const Usuario& otro) const;

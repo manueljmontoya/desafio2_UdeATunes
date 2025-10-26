@@ -207,14 +207,21 @@ bool Sistema::login(string nickname) {
             usuarioActivo = usuarios[i];
 
             if (usuarioActivo->esPremium()){
-                string seguido = usuarioActivo->getNicknameSeguido();
-
-                for (int i=0;i<totalUsuarios;i++){
-                    if(usuarios[i]->getNickname() == seguido){
-                        usuarioActivo->setUsuarioSeguido(usuarios[i]);
-                    }
-                }
                 usuarioActivo->setListaFavoritos(usuarioActivo,canciones);
+
+                if (usuarioActivo->estaSiguiendoAlguien()){
+                    string seguido = usuarioActivo->getNicknameSeguido();
+
+                    for (int i=0;i<totalUsuarios;i++){
+                        if(usuarios[i]->getNickname() == seguido){
+                            usuarioActivo->setUsuarioSeguido(usuarios[i]);
+                            usuarios[i]->setListaFavoritos(usuarios[i],canciones);
+                            usuarioActivo->seguirUsuario(usuarios[i]);
+                        }
+                    }
+                    usuarioActivo->generarListaReproduccion(usuarioActivo);
+                }
+
             }
 
             return true;
@@ -272,13 +279,13 @@ void Sistema::mostrarMenuPrincipal() {
         if (usuarioActivo->esPremium()) {
 
             cout << " 1. Reproducir aleatorio" << endl;
-            cout << " 2. Reproducir mis favoritos" << endl;
+            cout << " 2. Opciones lista de favoritos" << endl;
             cout << " 3. Cerrar sesion" << endl;
             cout << "Opcion: ";
             cin >> opcion;
 
             if (opcion == 1) {
-                cout << "Reproduciendo musica aleatoria..." << endl;
+                cout << "\nReproduciendo musica aleatoria..." << endl;
                 reproducirAleatorio();
             }
             else if (opcion == 2) {
@@ -288,7 +295,7 @@ void Sistema::mostrarMenuPrincipal() {
                 cerrarSesion();
             }
             else {
-                cout << "Opcion invalida" << endl;
+                cout << "\nOpcion invalida" << endl;
             }
         } else {
             cout << "1. Reproducir aleatorio" << endl;
@@ -303,7 +310,7 @@ void Sistema::mostrarMenuPrincipal() {
                 cerrarSesion();
             }
             else {
-                cout << "Opción invalida" << endl;
+                cout << "\nOpción invalida" << endl;
             }
         }
     }
@@ -315,7 +322,7 @@ void Sistema::mostrarMenuFavoritos() {
     bool volver = false;
 
     while (!volver) {
-        cout << "=== Mi Lista de Favoritos ===" << endl;
+        cout << "\n=== Mi Lista de Favoritos ===" << endl;
         cout << " 1. Editar mi lista de favoritos" << endl;
         cout << " 2. Seguir otra lista de favoritos" << endl;
         cout << " 3. Ejecutar mi lista de favoritos" << endl;
@@ -346,7 +353,7 @@ void Sistema::menuEditarFavoritos() {
     bool volver = false;
 
     while (!volver) {
-        cout << "=== Editar Mi Lista de Favoritos ===" << endl;
+        cout << "\n=== Editar Mi Lista de Favoritos ===" << endl;
         cout << " 1. Agregar canción por ID" << endl;
         cout << " 2. Eliminar canción por ID" << endl;
         cout << " 3. Volver" << endl;
@@ -355,13 +362,13 @@ void Sistema::menuEditarFavoritos() {
 
         if (opcion == 1) {
             string idCancion;
-            cout << "Ingrese el ID de la cancion: ";
+            cout << "\nIngrese el ID de la cancion: ";
             cin >> idCancion;
             agregarFavorito(idCancion);
         }
         else if (opcion == 2) {
             string idCancion;
-            cout << "Ingrese el ID de la cancion a eliminar: ";
+            cout << "\nIngrese el ID de la cancion a eliminar: ";
             cin >> idCancion;
             eliminarFavorito(idCancion);
         }
@@ -380,7 +387,7 @@ void Sistema::menuEjecutarFavoritos() {
 
     while (!volver) {
         cout << "\n=== Ejecutar Mi Lista de Favoritos ===" << endl;
-        cout << "¿Como desea reproducir?" << endl;
+        cout << "\n¿Como desea reproducir?" << endl;
         cout << " 1. Orden original" << endl;
         cout << " 2. Orden aleatorio" << endl;
         cout << " 3. Volver" << endl;
@@ -406,7 +413,7 @@ void Sistema::menuEjecutarFavoritos() {
 
 void Sistema::seguirListaFavoritos() {
     string nickname;
-    cout << "=== Seguir Lista de Favoritos ===" << endl;
+    cout << "\n=== Seguir Lista de Favoritos ===" << endl;
     cout << "Ingrese el nickname del usuario a seguir: ";
     cin >> nickname;
 

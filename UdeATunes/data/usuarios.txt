@@ -1,5 +1,5 @@
 20
-Juan_play20001_gonzales;premium;Barrancabermeja;Colombia;12/09/2022;aleja_cat95
+juan_play20001_gonzales;premium;Barrancabermeja;Colombia;12/09/2022;aleja_cat95
 nani_cutesi88;estandar;Madrid,Espana;23/11/2020;no_aplica
 martin_rockz77;premium;Buenos Aires;Argentina;05/04/2021;juan_play20001_gonzales
 sofia_azul_13;estandar;Medellin;Colombia;17/06/2023;no_aplica

@@ -44,10 +44,10 @@ void Cancion::reproducir(int calidad){
     archivo.close();
 
 
-    cout<<"Artista: "<<album->getArtista()->getNombre()<<endl;
+    cout<<"\nArtista: "<<album->getArtista()->getNombre()<<endl;
     cout<<"Album: "<<album->getNombre()<<endl;
     cout<<"Ruta a la portada del album: "<<album->getRutaPortada()<<endl;
-    cout<<"\0";
+    cout<<"\n";
     cout<<"Titulo de la cancion: "<<this->nombre<<endl;
 
     if (calidad==1){

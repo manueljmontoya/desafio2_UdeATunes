@@ -21,6 +21,7 @@ public:
     bool eliminarCancion(int idCancion);
     void fusionarListas(const ListaFavoritos& otra);
     Cancion* getCancion(int i);
+    void setCapacidad(int capacidad_){canciones.setCapacidad(capacidad_);}
 
     int getCantidadCanciones()const{return canciones.getCantidad();}
 
