@@ -18,7 +18,7 @@ public:
 
     Artista(const Artista& other) = default;
 
-    ~Artista() = default;
+    ~Artista();
 
     int getId() const;
     int getEdad() const;

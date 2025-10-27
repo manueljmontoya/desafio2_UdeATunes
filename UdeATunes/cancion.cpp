@@ -1,29 +1,41 @@
 #include <iostream>
 #include "cancion.h"
 #include "album.h"
+#include "Metricas.h"
 #include <fstream>
 
 using namespace std;
 
 void Cancion::reproducir(int calidad){
+    Metricas::iniciarMedicion("Reproducir Cancion");
 
     ifstream archivo("data/albumes.txt");
+    Metricas::agregarIteraciones(1);
+
     string linea;
+    Metricas::agregarIteraciones(1);
 
     Album* album = nullptr;
+    Metricas::agregarIteraciones(1);
 
     while (getline(archivo, linea)) {
+        Metricas::agregarIteraciones(2);
+
         size_t pos1 = linea.find(';');
         string id = linea.substr(0, pos1);
         int intId = stoi(id);
+        Metricas::agregarIteraciones(3);
 
         if (intId == idAlbum) {
+            Metricas::agregarIteraciones(1);
+
             size_t pos2 = linea.find(';', pos1 + 1);
             size_t pos3 = linea.find(';', pos2 + 1);
             size_t pos4 = linea.find(';', pos3 + 1);
             size_t pos5 = linea.find(';', pos4 + 1);
             size_t pos6 = linea.find(';', pos5 + 1);
             size_t pos7 = linea.find(';', pos6 + 1);
+            Metricas::agregarIteraciones(6);
 
             string nombre = linea.substr(pos1 + 1, pos2 - pos1 - 1);
             string strIdArtista = linea.substr(pos2 + 1, pos3 - pos2 - 1);
@@ -35,13 +47,16 @@ void Cancion::reproducir(int calidad){
             string portada = linea.substr(pos6 + 1, pos7 - pos6 - 1);
             string strPuntuacion = linea.substr(pos7 + 1);
             float puntuacion = stof(strPuntuacion);
+            Metricas::agregarIteraciones(10);
 
             album = new Album(nombre,intId,anio,discografica,portada,puntuacion,duracion, idArtista);
+            Metricas::agregarIteraciones(2);
             break;
 
         }
     }
     archivo.close();
+    Metricas::agregarIteraciones(1);
 
 
     cout<<"\nArtista: "<<album->getArtista()->getNombre()<<endl;
@@ -49,16 +64,24 @@ void Cancion::reproducir(int calidad){
     cout<<"Ruta a la portada del album: "<<album->getRutaPortada()<<endl;
     cout<<"\n";
     cout<<"Titulo de la cancion: "<<this->nombre<<endl;
+    Metricas::agregarIteraciones(5);
 
     if (calidad==1){
+        Metricas::agregarIteraciones(1);
         cout<<"Ruta del archivo de audio (128kbps): "<<this->ruta128<<endl;
+        Metricas::agregarIteraciones(1);
     }
     else{
+        Metricas::agregarIteraciones(1);
         cout<<"Ruta del archivo de audio (320kbps): "<<this->ruta320<<endl;
+        Metricas::agregarIteraciones(1);
 
     }
+    Metricas::agregarIteraciones(1);
     (this->reproducciones)++;
 
+    Metricas::agregarIteraciones(1);
     delete album;
 
+    Metricas::finalizarMedicion();
 }

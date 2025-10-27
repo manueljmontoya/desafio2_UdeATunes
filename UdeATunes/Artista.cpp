@@ -1,6 +1,8 @@
 #include "Artista.h"
+#include "Metricas.h"
 
 Artista::Artista(string nomb, int id, int edad, const string& pais, int seguidores, int posicion){
+    Metricas::iniciarMedicion("Constructor Artista");
 
     nombre=nomb;
     id=id;
@@ -8,6 +10,14 @@ Artista::Artista(string nomb, int id, int edad, const string& pais, int seguidor
     paisOrigen=pais;
     seguidores=seguidores;
     posicionTendencias=posicion;
+    Metricas::agregarIteraciones(6);
+
+    size_t memoria = sizeof(*this) +
+                    Metricas::calcularMemoriaString(nombre) +
+                    Metricas::calcularMemoriaString(paisOrigen);
+    Metricas::agregarMemoria(memoria);
+
+    Metricas::finalizarMedicion();
 
 }
 
@@ -50,4 +60,11 @@ void Artista::setPaisOrigen(const string& nuevoPais) {
 
 bool Artista::operator==(const Artista& other) const {
     return id == other.id;
+}
+
+Artista::~Artista() {
+    size_t memoria = sizeof(*this) +
+                     Metricas::calcularMemoriaString(nombre) +
+                     Metricas::calcularMemoriaString(paisOrigen);
+    Metricas::removerMemoria(memoria);
 }

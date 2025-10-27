@@ -3,6 +3,7 @@
 #include "sistema.h"
 #include <string>
 #include "Usuario.h"
+#include "Metricas.h"
 #include <cstdlib>
 #include <thread>
 #include <listafavoritos.h>
@@ -26,25 +27,45 @@ Sistema::Sistema() {
 }
 
 void Sistema::cargarDatos(){
+    Metricas::iniciarMedicion("Cargar Datos Sistema");
 
     ifstream archivo1("data/usuarios.txt");
+    Metricas::agregarIteraciones(1);
+
     if (!archivo1.is_open()) {
         cout << "Error abriendo archivos de usuarios." << endl;
+        Metricas::agregarIteraciones(2);
     }
+    Metricas::agregarIteraciones(1);
+
     string linea;
     int contadorLinea = 0;
+    Metricas::agregarIteraciones(2);
+
     while (getline(archivo1, linea)) {
+        Metricas::agregarIteraciones(2);
+
         if (contadorLinea == 0){
+            Metricas::agregarIteraciones(1);
             int intLinea=stoi(linea);
             usuarios = new Usuario*[intLinea];
+
+            size_t memoriaUsuarios = sizeof(Usuario*) * intLinea;
+            Metricas::agregarMemoria(memoriaUsuarios);
+
             contadorLinea++;
+            Metricas::agregarIteraciones(3);
+
         }
         else{
+            Metricas::agregarIteraciones(1);
+
             size_t pos1 = linea.find(';');
             size_t pos2 = linea.find(';', pos1 + 1);
             size_t pos3 = linea.find(';', pos2 + 1);
             size_t pos4 = linea.find(';', pos3 + 1);
             size_t pos5 = linea.find(';', pos4 + 1);
+            Metricas::agregarIteraciones(5);
 
             string nickname = linea.substr(0, pos1);
             string tipo = linea.substr(pos1 + 1, pos2 - pos1 - 1);
@@ -52,29 +73,41 @@ void Sistema::cargarDatos(){
             string pais = linea.substr(pos3 + 1, pos4 - pos3 - 1);
             string fecha = linea.substr(pos4 + 1, pos5 - pos4 -1);
             string usuarioSiguiendo = linea.substr(pos5 + 1);
+            Metricas::agregarIteraciones(6);
 
             usuarios[totalUsuarios] = new Usuario(nickname,tipo,ciudad,pais,fecha,usuarioSiguiendo);
             totalUsuarios++;
+            Metricas::agregarIteraciones(2);
         }
     }
     archivo1.close();
+    Metricas::agregarIteraciones(1);
 
     ifstream archivo2("data/canciones.txt");
     linea="";
     contadorLinea=0;
+    Metricas::agregarIteraciones(3);
+
     while (getline(archivo2, linea)) {
+        Metricas::agregarIteraciones(2);
+
         if (contadorLinea == 0){
+            Metricas::agregarIteraciones(1);
             int cantidadCanciones=stoi(linea);
             canciones->setCapacidad(cantidadCanciones);
             contadorLinea++;
+            Metricas::agregarIteraciones(3);
         }
         else{
+            Metricas::agregarIteraciones(1);
+
             size_t pos1 = linea.find(';');
             size_t pos2 = linea.find(';', pos1 + 1);
             size_t pos3 = linea.find(';', pos2 + 1);
             size_t pos4 = linea.find(';', pos3 + 1);
             size_t pos5 = linea.find(';', pos4 + 1);
             size_t pos6 = linea.find(';', pos5 + 1);
+            Metricas::agregarIteraciones(6);
 
             string strId = linea.substr(0, pos1);
             int id = stoi(strId);
@@ -87,108 +120,167 @@ void Sistema::cargarDatos(){
             string ruta2 = linea.substr(pos5 + 1, pos4 - pos5 - 1);
             string strRepro = linea.substr(pos6 + 1, pos5 - pos6 - 1);
             int reproducciones = stoi(strRepro);
+            Metricas::agregarIteraciones(10);
 
             Cancion* cancionActual= new Cancion(id,duracion,reproducciones,ruta1,ruta2,
                                                  nombre,idAlbum);
             bool agregada=canciones->agregar(cancionActual);
+            Metricas::agregarIteraciones(2);
+
             if (agregada){
+                Metricas::agregarIteraciones(1);
                 totalCanciones++;
+                Metricas::agregarIteraciones(1);
             }
+            else Metricas::agregarIteraciones(1);
         }
     }
     archivo2.close();
+    Metricas::agregarIteraciones(1);
 
     anuncios->cargarAnunciosDesdeArchivos();
+    Metricas::agregarIteraciones(1);
 
+    Metricas::finalizarMedicion();
 }
 
 
 
 void Sistema::reproducirAleatorio(){
 
+    Metricas::iniciarMedicion("Reproduccion Aleatoria");
+
     int calidad;
     if (usuarioActivo->getTipoMembresia() == "estandar"){
         calidad=1;
+        Metricas::agregarIteraciones(2);
     }
     else{
         calidad=2;
+        Metricas::agregarIteraciones(2);
     }
 
     for (int i = 0; i < 5; i++) {
+
+        Metricas::agregarIteraciones(1);
+
         if (calidad==1 && (contadorReproducciones % 3) == 0) {
+            Metricas::agregarIteraciones(3);
             anuncios->mostrarAnuncioAleatorio();
         }
 
         int indiceAleatorio = rand() % totalCanciones;
+        Metricas::agregarIteraciones(2);
         canciones->getCancion(indiceAleatorio)->reproducir(calidad);
 
         std::this_thread::sleep_for(std::chrono::seconds(3));
         contadorReproducciones++;
+        Metricas::agregarIteraciones(1);
     }
 
+    Metricas::finalizarMedicion();
 }
 
 void Sistema::reproducirAleatorio(ListaFavoritos* lista){
+    Metricas::iniciarMedicion("Reproducir Aleatorio Favoritos");
 
     for (int i = 0; i < 5; i++) {
+        Metricas::agregarIteraciones(1);
+
         int indiceAleatorio = rand() % (lista->getCantidadCanciones());
+        Metricas::agregarIteraciones(3);
+
         lista->getCancion(indiceAleatorio)->reproducir(2);
+        Metricas::agregarIteraciones(1);
 
         std::this_thread::sleep_for(std::chrono::seconds(3));
+        Metricas::agregarIteraciones(1);
     }
 
+    Metricas::finalizarMedicion();
 }
 
 
 void Sistema::reproducirLista(int modo){
+    Metricas::iniciarMedicion("Reproducir Lista Favoritos");
 
     if (modo==1){
+        Metricas::agregarIteraciones(1);
         reproducirAleatorio(usuarioActivo->getListaFavoritos());
+        Metricas::agregarIteraciones(1);
     }
     else{
+        Metricas::agregarIteraciones(1);
+
         int historial[6];
         int cantidadHistorial = 0;
         int indiceActual = 0;
         int opcion;
+        Metricas::agregarIteraciones(4);
 
         while (true) {
+            Metricas::agregarIteraciones(1);
+
             cout << "\nOpciones: (1) siguiente, (2) retroceder, (3) salir → ";
             cin >> opcion;
+            Metricas::agregarIteraciones(2);
 
             if (opcion == 1) {
+                Metricas::agregarIteraciones(1);
                 if (indiceActual >= usuarioActivo->getCantidadFavoritos()) {
+                    Metricas::agregarIteraciones(2);
                     cout << "Fin de la lista de canciones.\n";
+                    Metricas::agregarIteraciones(1);
                     continue;
                 }
+                else Metricas::agregarIteraciones(1);
 
                 usuarioActivo->getListaFavoritos()->getCancion(indiceActual)->reproducir(2);
+                Metricas::agregarIteraciones(1);
 
                 if (cantidadHistorial < 6) {
+                    Metricas::agregarIteraciones(1);
                     historial[cantidadHistorial] = indiceActual;
                     cantidadHistorial++;
+                    Metricas::agregarIteraciones(2);
                 } else {
-                    for (int i = 0; i < 5; i++)
+                    Metricas::agregarIteraciones(1);
+                    for (int i = 0; i < 5; i++){
+                        Metricas::agregarIteraciones(1);
                         historial[i] = historial[i + 1];
+                        Metricas::agregarIteraciones(1);
                     historial[5] = indiceActual;
+                    Metricas::agregarIteraciones(1);
+                }
                 }
 
                 indiceActual++;
                 std::this_thread::sleep_for(std::chrono::seconds(3));
+                Metricas::agregarIteraciones(2);
             }
 
             else if (opcion == 2) {
+                Metricas::agregarIteraciones(1);
                 if (cantidadHistorial <= 1) {
+                    Metricas::agregarIteraciones(1);
                     cout << "No hay canciones anteriores.\n";
+                    Metricas::agregarIteraciones(1);
                 } else {
+                    Metricas::agregarIteraciones(1);
+
                     cantidadHistorial--;
                     indiceActual = historial[cantidadHistorial - 1];
                     usuarioActivo->getListaFavoritos()->getCancion(indiceActual)->reproducir(2);
                     std::this_thread::sleep_for(std::chrono::seconds(3));
+
+                    Metricas::agregarIteraciones(4);
                 }
             }
 
             else if (opcion == 3) {
+                Metricas::agregarIteraciones(1);
                 cout << "Saliendo del reproductor...\n";
+                Metricas::agregarIteraciones(1);
                 break;
             }
         }
@@ -197,36 +289,55 @@ void Sistema::reproducirLista(int modo){
 }
 
 bool Sistema::login(string nickname) {
+    Metricas::iniciarMedicion("Login Usuario");
 
     if (usuarios == nullptr || totalUsuarios == 0) {
+        Metricas::agregarIteraciones(2);
         cout << "No hay usuarios en el sistema" << endl;
+        Metricas::finalizarMedicion();
         return false;
     }
     for (int i = 0; i < totalUsuarios; i++) {
+        Metricas::agregarIteraciones(1);
         if (usuarios[i]->getNickname() == nickname) {
+            Metricas::agregarIteraciones(1);
             usuarioActivo = usuarios[i];
+            Metricas::agregarIteraciones(1);
 
             if (usuarioActivo->esPremium()){
+                Metricas::agregarIteraciones(1);
                 usuarioActivo->setListaFavoritos(usuarioActivo,canciones);
+                Metricas::agregarIteraciones(1);
 
                 if (usuarioActivo->estaSiguiendoAlguien()){
+                    Metricas::agregarIteraciones(1);
                     string seguido = usuarioActivo->getNicknameSeguido();
+                    Metricas::agregarIteraciones(1);
 
                     for (int i=0;i<totalUsuarios;i++){
+                        Metricas::agregarIteraciones(1);
                         if(usuarios[i]->getNickname() == seguido){
+                            Metricas::agregarIteraciones(1);
                             usuarioActivo->setUsuarioSeguido(usuarios[i]);
                             usuarios[i]->setListaFavoritos(usuarios[i],canciones);
                             usuarioActivo->seguirUsuario(usuarios[i]);
+                            Metricas::agregarIteraciones(3);
                         }
+                        else Metricas::agregarIteraciones(1);
                     }
                     usuarioActivo->generarListaReproduccion(usuarioActivo);
+                    Metricas::agregarIteraciones(1);
                 }
+                else Metricas::agregarIteraciones(1);
 
             }
 
+            Metricas::finalizarMedicion();
             return true;
         }
+        else Metricas::agregarIteraciones(1);
     }
+    Metricas::finalizarMedicion();
     return false;
 }
 
@@ -425,56 +536,89 @@ void Sistema::seguirListaFavoritos() {
 }
 
 void Sistema::agregarFavorito(string idCancion) {
+    Metricas::iniciarMedicion("Agregar Favorito");
+
     if (!usuarioActivo->esPremium()) {
+        Metricas::agregarIteraciones(2);
         cout << "Error: Solo usuarios premium pueden agregar favoritos" << endl;
+        Metricas::finalizarMedicion();
         return;
     }
+    Metricas::agregarIteraciones(1);
 
     try {
         int id = stoi(idCancion);
         Cancion* cancion = canciones->buscarCancion(id);
+        Metricas::agregarIteraciones(2);
 
         if (cancion == nullptr) {
+            Metricas::agregarIteraciones(2);
             cout << "Error: Cancion con ID " << id << " no encontrada." << endl;
+            Metricas::finalizarMedicion();
             return;
         }
+        Metricas::agregarIteraciones(1);
 
         if (usuarioActivo->agregarAFavoritos(cancion)) {
+            Metricas::agregarIteraciones(2);
             cout << "Cancion agregada a favoritos." << endl;
         } else {
+            Metricas::agregarIteraciones(2);
             cout << "Error: Cancion ya esta en favoritos" << endl;
         }
     } catch (...) {
+        Metricas::agregarIteraciones(2);
         cout << "Error: ID invalido" << endl;
     }
+    Metricas::finalizarMedicion();
 }
 
 void Sistema::eliminarFavorito(string idCancion) {
+    Metricas::iniciarMedicion("Eliminar Favorito");
+
     if (!usuarioActivo->esPremium()) {
+        Metricas::agregarIteraciones(1);
         cout << "Error: Solo usuarios premium pueden eliminar favoritos" << endl;
+        Metricas::finalizarMedicion();
         return;
     }
 
     try {
         int id = stoi(idCancion);
+        Metricas::agregarIteraciones(1);
 
         if (usuarioActivo->eliminarDeFavoritos(id)) {
+            Metricas::agregarIteraciones(2);
             cout << "Cancion eliminada de favoritos." << endl;
         } else {
             cout << "Error: la cancion no fue encontrada en favoritos" << endl;
+            Metricas::agregarIteraciones(2);
         }
     } catch (...) {
+        Metricas::agregarIteraciones(2);
         cout << "Error: ID invalido" << endl;
     }
+
+    Metricas::finalizarMedicion();
 }
 
 bool Sistema::seguirListaUsuario(string nickname) {
+    Metricas::iniciarMedicion("Seguir Lista Usuario");
+
     for (int i = 0; i < totalUsuarios; i++) {
+        Metricas::agregarIteraciones(1);
+
         if (usuarios[i]->getNickname() == nickname) {
-            return usuarioActivo->seguirUsuario(usuarios[i]);
+            Metricas::agregarIteraciones(2);
+            bool resultado = usuarioActivo->seguirUsuario(usuarios[i]);
+            Metricas::finalizarMedicion();
+            return resultado;
         }
+        Metricas::agregarIteraciones(1);
     }
+    Metricas::agregarIteraciones(1);
     cout << "Usuario '" << nickname << "' no encontrado." << endl;
+    Metricas::finalizarMedicion();
     return false;
 }
 

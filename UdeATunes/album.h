@@ -25,7 +25,7 @@ private:
 public:
 
     Album(string n,int cod, string fec,string disq, string port, float punt,float dur, int art);
-    ~Album(){delete artista;}
+    ~Album();
     Artista* getArtista(){return artista;}
     string getRutaPortada(){return rutaPortada;}
     string getNombre(){return nombre;}

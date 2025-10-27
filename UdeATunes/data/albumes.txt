@@ -1,20 +1,20 @@
-00;Fiesta felina;00001;2015;Sony Music Perú;38.50;imagenes/tigresa_del_oriente/Fiesta_felina.png;74
+00;Fiesta felina;00001;2015;Sony Music Peru;38.50;imagenes/tigresa_del_oriente/Fiesta_felina.png;74
 11;Secretos;00002;1983;RCA Records;42.30;imagenes/Jose_jose/secretos.png;95
-22;Grandes éxitos;00003;1999;BMG España;51.20;imagenes/Rocio_Durcal/grandes_exitos.png;88
-33;Revolución de amor;00004;2002;Warner Music México;47.15;imagenes/Maná/revolucion.png;90
-44;Más;00005;1997;WEA Latina;46.50;imagenes/Alejandro_Sanz/mas.png;96
-55;Romances;00006;1997;Warner Music México;39.00;imagenes/Luis_Miguel/romances.png;85
-66;Dónde jugarán los niños;00004;1992;Warner Music México;45.20;imagenes/Maná/donde_jugaran_los_niños.png;92
+22;Grandes exitos;00003;1999;BMG Espana;51.20;imagenes/Rocio_Durcal/grandes_exitos.png;88
+33;Revolucion de amor;00004;2002;Warner Music Mexico;47.15;imagenes/Mana/revolucion.png;90
+44;Mas;00005;1997;WEA Latina;46.50;imagenes/Alejandro_Sanz/mas.png;96
+55;Romances;00006;1997;Warner Music Mexico;39.00;imagenes/Luis_Miguel/romances.png;85
+66;Donde jugaran los ninos;00004;1992;Warner Music Mexico;45.20;imagenes/Mana/donde_jugaran_los_ninos.png;92
 77;Latina;00007;1998;Sony Music;49.30;imagenes/Celia_Cruz/latina.png;94
-88;El león;00008;1992;Sony Music Argentina;44.00;imagenes/Los_Fabulosos_Cadillacs/el_leon.png;89
-99;Llueve el corazón;00009;2011;Warner Music México;41.15;imagenes/Jesse_y_Joy/llorar.png;87
+88;El leon;00008;1992;Sony Music Argentina;44.00;imagenes/Los_Fabulosos_Cadillacs/el_leon.png;89
+99;Llueve el corazon;00009;2011;Warner Music Mexico;41.15;imagenes/Jesse_y_Joy/llorar.png;87
 10;54+;00010;2016;Atlantic Records;40.10;imagenes/Danny_Ocean/54plus.png;83
-12;Femenino;00011;2006;Sony Music México;37.55;imagenes/Julieta_Venegas/femenino.png;88
-13;Comfort y música para volar;00012;1996;Sony Music Argentina;42.00;imagenes/Soda_Stereo/comfort_y_musica.png;93
+12;Femenino;00011;2006;Sony Music Mexico;37.55;imagenes/Julieta_Venegas/femenino.png;88
+13;Comfort y musica para volar;00012;1996;Sony Music Argentina;42.00;imagenes/Soda_Stereo/comfort_y_musica.png;93
 14;Vallenato;00013;2017;Sony Music Colombia;39.25;imagenes/Shakira/vallenato.png;97
-15;Romántico;00014;2008;Warner Music España;43.10;imagenes/Carlos_Baute/romantico.png;84
-16;Mi persona favorita;00005;2019;Universal Music España;38.40;imagenes/Alejandro_Sanz/mi_persona_favorita.png;90
-17;Cuatro caminos;00015;2003;Universal Music México;46.00;imagenes/Cafe_Tacvba/cuatro_caminos.png;86
+15;Romantico;00014;2008;Warner Music Espana;43.10;imagenes/Carlos_Baute/romantico.png;84
+16;Mi persona favorita;00005;2019;Universal Music Espana;38.40;imagenes/Alejandro_Sanz/mi_persona_favorita.png;90
+17;Cuatro caminos;00015;2003;Universal Music Mexico;46.00;imagenes/Cafe_Tacvba/cuatro_caminos.png;86
 18;Pop latino;00016;2017;Sony Music Colombia;40.50;imagenes/Carlos_Vives/pop.png;89
 19;Ballads;00017;2002;Sony Discos;44.20;imagenes/Marc_Anthony/ballads.png;91
-20;Pop;00018;2018;Sony Music México;38.10;imagenes/Thalia/pop.png;85
+20;Pop;00018;2018;Sony Music Mexico;38.10;imagenes/Thalia/pop.png;85
