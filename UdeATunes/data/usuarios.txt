@@ -1,4 +1,4 @@
-20;;;;;
+20
 juan_play20001_gonzales;premium;Barrancabermeja;Colombia;12/09/2022;aleja_cat95
 nani_cutesi88;estandar;Madrid,Espana;23/11/2020;no_aplica;
 martin_rockz77;premium;Buenos Aires;Argentina;05/04/2021;juan_play20001_gonzales
@@ -13,7 +13,7 @@ leo_artesano;premium;Cusco;Peru;11/10/2022;tomas_beatx
 nora_sunset;estandar;Sevilla;Espana;28/02/2021;no_aplica
 camilo_wave09;premium;Manizales;Colombia;15/11/2021;leo_artesano
 emilia_moonrise;estandar;Buenos Aires;Argentina;30/03/2024;no_aplica
-fabian_code07;premium;Caracas;Venezuela;08/12/2020;camilo_wave09
+fabian_code07;premium;Caracas;Venezuela;08/12/2020;no_aplica
 isabella_flow;estandar;Santiago;Chile;02/06/2023;no_aplica
 raul_gtr92;premium;Montevideo;Uruguay;19/01/2022;fabian_code07
 marian_blossom;estandar;Bogota;Colombia;25/05/2023;no_aplica

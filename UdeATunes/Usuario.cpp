@@ -135,6 +135,9 @@ bool Usuario::dejarDeSeguir() {
     usuarioSeguido = nullptr;
     Metricas::agregarIteraciones(1);
     Metricas::finalizarMedicion();
+
+
+
     return true;
 }
 
@@ -289,42 +292,49 @@ Usuario::~Usuario() {
     ofstream tempUsuarios("data/usuarios_temp.txt");
     Metricas::agregarIteraciones(2);
 
-
+    int contador=0;
     while (getline(inUsuarios, linea)) {
-        Metricas::agregarIteraciones(1);
 
-        size_t pos1 = 0, pos2 = 0;
-        string campos[6];
-        int i = 0;
-        Metricas::agregarIteraciones(3);
-
-        while (i < 5 && (pos2 = linea.find(';', pos1)) != string::npos) {
+        if (contador == 0){
+            tempUsuarios<<linea<<"\n";
+            contador++;
+        }
+        else{
             Metricas::agregarIteraciones(1);
 
-            campos[i] = linea.substr(pos1, pos2 - pos1);
-            pos1 = pos2 + 1;
-            i++;
+            size_t pos1 = 0, pos2 = 0;
+            string campos[6];
+            int i = 0;
             Metricas::agregarIteraciones(3);
 
-        }
-        campos[i] = linea.substr(pos1);
-        Metricas::agregarIteraciones(1);
+            while (i < 5 && (pos2 = linea.find(';', pos1)) != string::npos) {
+                Metricas::agregarIteraciones(1);
 
+                campos[i] = linea.substr(pos1, pos2 - pos1);
+                pos1 = pos2 + 1;
+                i++;
+                Metricas::agregarIteraciones(3);
 
-        if (campos[0] == nickname) {
+            }
+            campos[i] = linea.substr(pos1);
             Metricas::agregarIteraciones(1);
 
-            campos[5] = nicknameUsuarioSeguido;
+
+            if (campos[0] == nickname) {
+                Metricas::agregarIteraciones(1);
+
+                campos[5] = nicknameUsuarioSeguido;
+                Metricas::agregarIteraciones(1);
+
+            }
+            else Metricas::agregarIteraciones(1);
+
+
+            tempUsuarios << campos[0] << ";" << campos[1] << ";" << campos[2] << ";"
+                         << campos[3] << ";" << campos[4] << ";" << campos[5] << "\n";
             Metricas::agregarIteraciones(1);
 
         }
-        else Metricas::agregarIteraciones(1);
-
-
-        tempUsuarios << campos[0] << ";" << campos[1] << ";" << campos[2] << ";"
-                     << campos[3] << ";" << campos[4] << ";" << campos[5] << "\n";
-        Metricas::agregarIteraciones(1);
-
     }
 
 

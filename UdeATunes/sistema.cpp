@@ -223,10 +223,14 @@ void Sistema::reproducirLista(int modo){
 
             cout << "\nOpciones: (1) siguiente, (2) retroceder, (3) salir → ";
             cin >> opcion;
-            Metricas::agregarIteraciones(2);
+
+        Metricas::agregarIteraciones(2);
 
             if (opcion == 1) {
                 Metricas::agregarIteraciones(1);
+
+                cout<<indiceActual<<","<<usuarioActivo->getCantidadFavoritos();
+
                 if (indiceActual >= usuarioActivo->getCantidadFavoritos()) {
                     Metricas::agregarIteraciones(2);
                     cout << "Fin de la lista de canciones.\n";
@@ -309,7 +313,7 @@ bool Sistema::login(string nickname) {
                 usuarioActivo->setListaFavoritos(usuarioActivo,canciones);
                 Metricas::agregarIteraciones(1);
 
-                if (usuarioActivo->estaSiguiendoAlguien()){
+                if (usuarioActivo->getNicknameSeguido() != "no_aplica"){
                     Metricas::agregarIteraciones(1);
                     string seguido = usuarioActivo->getNicknameSeguido();
                     Metricas::agregarIteraciones(1);
