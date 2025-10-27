@@ -117,8 +117,8 @@ void Sistema::cargarDatos(){
             string strDuracion = linea.substr(pos3 + 1, pos4 - pos3 - 1);
             float duracion = stof(strDuracion);
             string ruta1 = linea.substr(pos4 + 1, pos5 - pos4 - 1);
-            string ruta2 = linea.substr(pos5 + 1, pos4 - pos5 - 1);
-            string strRepro = linea.substr(pos6 + 1, pos5 - pos6 - 1);
+            string ruta2 = linea.substr(pos5 + 1, pos6 - pos5 - 1);
+            string strRepro = linea.substr(pos6 + 1);
             int reproducciones = stoi(strRepro);
             Metricas::agregarIteraciones(10);
 
@@ -320,8 +320,8 @@ bool Sistema::login(string nickname) {
                             Metricas::agregarIteraciones(1);
                             usuarioActivo->setUsuarioSeguido(usuarios[i]);
                             usuarios[i]->setListaFavoritos(usuarios[i],canciones);
-                            usuarioActivo->seguirUsuario(usuarios[i]);
                             Metricas::agregarIteraciones(3);
+                            break;
                         }
                         else Metricas::agregarIteraciones(1);
                     }
@@ -342,6 +342,7 @@ bool Sistema::login(string nickname) {
 }
 
 void Sistema::cerrarSesion() {
+    delete usuarioActivo;
     usuarioActivo = nullptr;
 }
 
@@ -366,6 +367,7 @@ void Sistema::mostrarMenuLogin() {
         }
         else if (opcion == 2) {
             cout << "¡Hasta pronto!" << endl;
+            delete usuarios;
             break;
         }
         else {
@@ -400,7 +402,12 @@ void Sistema::mostrarMenuPrincipal() {
                 reproducirAleatorio();
             }
             else if (opcion == 2) {
-                mostrarMenuFavoritos();
+                if (usuarioActivo->getListaFavoritos() == nullptr){
+                    cout<<"\nTu lista de favoritos esta vacia y aun no sigues a \nningun usuario con una lista da favoritos";
+                }
+                else{
+                    mostrarMenuFavoritos();
+                }
             }
             else if (opcion == 3) {
                 cerrarSesion();

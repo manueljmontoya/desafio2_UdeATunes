@@ -1,6 +1,6 @@
-20
+20;;;;;
 juan_play20001_gonzales;premium;Barrancabermeja;Colombia;12/09/2022;aleja_cat95
-nani_cutesi88;estandar;Madrid,Espana;23/11/2020;no_aplica
+nani_cutesi88;estandar;Madrid,Espana;23/11/2020;no_aplica;
 martin_rockz77;premium;Buenos Aires;Argentina;05/04/2021;juan_play20001_gonzales
 sofia_azul_13;estandar;Medellin;Colombia;17/06/2023;no_aplica
 lucho_gamerx;premium;Santiago;Chile;22/08/2022;martin_rockz77
@@ -19,3 +19,4 @@ raul_gtr92;premium;Montevideo;Uruguay;19/01/2022;fabian_code07
 marian_blossom;estandar;Bogota;Colombia;25/05/2023;no_aplica
 nico_devx;premium;Lima;Peru;07/07/2021;raul_gtr92
 paty_lunaria;estandar;Ciudad de Mexico;Mexico;04/04/2024;no_aplica
+aleja_cat95;premium;Pereira;Colombia;14/07/2021;fabian_code07

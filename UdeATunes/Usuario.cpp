@@ -156,18 +156,27 @@ void Usuario::generarListaReproduccion(Usuario* usuario) {
     int indice = 0;
     Metricas::agregarIteraciones(3);
 
-    for (int i = 0; i < this->getCantidadFavoritos(); i++) {
-        Metricas::agregarIteraciones(1);
-        listaTemporal->agregarCancion(listaFavoritos->buscarCancion(i));
-        indice++;
-        Metricas::agregarIteraciones(2);
+    if (listaFavoritos != nullptr) {
+
+        for (int i = 0; i < this->getCantidadFavoritos(); i++) {
+            Metricas::agregarIteraciones(1);
+            listaTemporal->agregarCancion(listaFavoritos->getCancion(i));
+            indice++;
+            Metricas::agregarIteraciones(2);
+        }
+
+        size_t memoriaAnterior = sizeof(*listaFavoritos);
+        Metricas::removerMemoria(memoriaAnterior);
+        delete listaFavoritos;
+        Metricas::agregarIteraciones(1); // por removerMemoria + delete
     }
+    Metricas::agregarIteraciones(1); // por la condición
 
     if (usuarioSeguido != nullptr) {
         Metricas::agregarIteraciones(1);
         for (int i = 0; i < usuarioSeguido->getCantidadFavoritos(); i++) {
             Metricas::agregarIteraciones(1);
-            listaTemporal->agregarCancion(usuarioSeguido->listaFavoritos->buscarCancion(i));
+            listaTemporal->agregarCancion(usuarioSeguido->listaFavoritos->getCancion(i));
             indice++;
             Metricas::agregarIteraciones(1);
         }
@@ -182,20 +191,9 @@ void Usuario::generarListaReproduccion(Usuario* usuario) {
 void Usuario::setListaFavoritos(Usuario* usuario, ListaCanciones* canciones){
     Metricas::iniciarMedicion("Set lista favoritos");
 
-    // 1. Liberar y remover memoria de lista anterior SI existe
-    if (listaFavoritos != nullptr) {
-        size_t memoriaAnterior = sizeof(*listaFavoritos);
-        Metricas::removerMemoria(memoriaAnterior);
-        delete listaFavoritos;
-        Metricas::agregarIteraciones(1); // por removerMemoria + delete
-    }
-    Metricas::agregarIteraciones(1); // por la condición
-
-    // 2. Crear nueva lista
     ListaFavoritos* listaUsuario = new ListaFavoritos(usuario);
     Metricas::agregarIteraciones(1); // por new
 
-    // 3. Agregar memoria del NUEVO objeto
     size_t memoriaNueva = sizeof(*listaUsuario);
     Metricas::agregarMemoria(memoriaNueva);
     Metricas::agregarIteraciones(1); // por agregarMemoria
@@ -203,6 +201,8 @@ void Usuario::setListaFavoritos(Usuario* usuario, ListaCanciones* canciones){
     ifstream archivo("data/listas_favoritos.txt");
     Metricas::agregarIteraciones(1);
     string linea;
+
+    bool encontrada = false;
 
     while (getline(archivo, linea)) {
         Metricas::agregarIteraciones(1);
@@ -213,6 +213,7 @@ void Usuario::setListaFavoritos(Usuario* usuario, ListaCanciones* canciones){
         Metricas::agregarIteraciones(1);
 
         if (propietario == this->nickname) {
+            encontrada = true;
             Metricas::agregarIteraciones(1);
 
             size_t pos2 = linea.find(';', pos1 + 1);
@@ -222,40 +223,51 @@ void Usuario::setListaFavoritos(Usuario* usuario, ListaCanciones* canciones){
             int cantidadCanciones = stoi(strCantidad);
             Metricas::agregarIteraciones(1);
 
-            listaUsuario->setCapacidad(cantidadCanciones);
-            Metricas::agregarIteraciones(1);
-
             size_t inicio = pos2 + 1;
             size_t fin;
 
-            while ((fin = linea.find(';', inicio)) != string::npos) {
-                Metricas::agregarIteraciones(1);
-
-                string idCancion = linea.substr(inicio, fin - inicio);
-                Metricas::agregarIteraciones(1);
-                int intIdCancion = stoi(idCancion);
-                Metricas::agregarIteraciones(1);
-                listaUsuario->agregarCancion(canciones->buscarCancion(intIdCancion));
-                Metricas::agregarIteraciones(1);
-                inicio = fin + 1;
+            if (cantidadCanciones == 0){
+                listaFavoritos = nullptr;
             }
+            else{
+                listaUsuario->setCapacidad(cantidadCanciones);
+                Metricas::agregarIteraciones(1);
+                while ((fin = linea.find(';', inicio)) != string::npos) {
+                    Metricas::agregarIteraciones(1);
 
-            string ultimoIdCancion = linea.substr(inicio);
-            if (!ultimoIdCancion.empty()) {
-                Metricas::agregarIteraciones(1);
-                int intIdCancion = stoi(ultimoIdCancion);
-                Metricas::agregarIteraciones(1);
-                listaUsuario->agregarCancion(canciones->buscarCancion(intIdCancion));
+                    string idCancion = linea.substr(inicio, fin - inicio);
+                    Metricas::agregarIteraciones(1);
+                    int intIdCancion = stoi(idCancion);
+                    Metricas::agregarIteraciones(1);
+                    listaUsuario->agregarCancion(canciones->buscarCancion(intIdCancion));
+                    Metricas::agregarIteraciones(1);
+                    inicio = fin + 1;
+                }
+
+                string ultimoIdCancion = linea.substr(inicio);
+                if (!ultimoIdCancion.empty()) {
+                    Metricas::agregarIteraciones(1);
+                    int intIdCancion = stoi(ultimoIdCancion);
+                    Metricas::agregarIteraciones(1);
+                    listaUsuario->agregarCancion(canciones->buscarCancion(intIdCancion));
+                    Metricas::agregarIteraciones(1);
+                }
                 Metricas::agregarIteraciones(1);
             }
-            Metricas::agregarIteraciones(1);
+            break;
         }
         Metricas::agregarIteraciones(1);
     }
     archivo.close();
     Metricas::agregarIteraciones(1);
 
-    listaFavoritos = listaUsuario;
+    if (encontrada) {
+        listaFavoritos = listaUsuario;
+    } else {
+        delete listaUsuario;
+        listaFavoritos = nullptr;
+    }
+
     Metricas::agregarIteraciones(1);
 
     Metricas::finalizarMedicion();
@@ -346,7 +358,7 @@ Usuario::~Usuario() {
         if (nickLista == nickname) {
             Metricas::agregarIteraciones(1);
 
-            tempListas << nickname << ";";
+            tempListas << nickname << ";" << listaFavoritos->getCantidadCanciones() << ";";
             Metricas::agregarIteraciones(1);
 
 
@@ -384,7 +396,7 @@ Usuario::~Usuario() {
     if (!listaEncontrada) {
         Metricas::agregarIteraciones(1);
 
-        tempListas << nickname << ";";
+        tempListas << nickname << ";" << listaFavoritos->getCantidadCanciones() << ";";
         Metricas::agregarIteraciones(1);
 
         int total = listaFavoritos->getCantidadCanciones();
