@@ -221,15 +221,13 @@ void Sistema::reproducirLista(int modo){
         while (true) {
             Metricas::agregarIteraciones(1);
 
-            cout << "\nOpciones: (1) siguiente, (2) retroceder, (3) salir → ";
+            cout << "\nOpciones: (1) siguiente, (2) retroceder, (3) salir";
             cin >> opcion;
 
         Metricas::agregarIteraciones(2);
 
             if (opcion == 1) {
                 Metricas::agregarIteraciones(1);
-
-                cout<<indiceActual<<","<<usuarioActivo->getCantidadFavoritos();
 
                 if (indiceActual >= usuarioActivo->getCantidadFavoritos()) {
                     Metricas::agregarIteraciones(2);
@@ -432,7 +430,7 @@ void Sistema::mostrarMenuPrincipal() {
                 cerrarSesion();
             }
             else {
-                cout << "\nOpción invalida" << endl;
+                cout << "\nOpcion invalida" << endl;
             }
         }
     }
@@ -448,7 +446,7 @@ void Sistema::mostrarMenuFavoritos() {
         cout << " 1. Editar mi lista de favoritos" << endl;
         cout << " 2. Seguir otra lista de favoritos" << endl;
         cout << " 3. Ejecutar mi lista de favoritos" << endl;
-        cout << " 4. Volver al menú principal" << endl;
+        cout << " 4. Volver al menu principal" << endl;
         cout << "Opcion: ";
         cin >> opcion;
 
@@ -476,8 +474,8 @@ void Sistema::menuEditarFavoritos() {
 
     while (!volver) {
         cout << "\n=== Editar Mi Lista de Favoritos ===" << endl;
-        cout << " 1. Agregar canción por ID" << endl;
-        cout << " 2. Eliminar canción por ID" << endl;
+        cout << " 1. Agregar cancion por ID" << endl;
+        cout << " 2. Eliminar cancion por ID" << endl;
         cout << " 3. Volver" << endl;
         cout << "Opcion: ";
         cin >> opcion;
