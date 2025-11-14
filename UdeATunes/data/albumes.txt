@@ -1,76 +1,76 @@
-01;Tigresa del Oriente Album 1;00001;Productora_Tigresa_del_Oriente;40:44;imagenes/Tigresa_del_Oriente/01.png;74
-02;Tigresa del Oriente Album 2;00001;Productora_Tigresa_del_Oriente;41:51;imagenes/Tigresa_del_Oriente/02.png;64
-03;Jose Jose Album 1;00002;Productora_Jose_Jose;40:04;imagenes/Jose_Jose/03.png;71
-04;Jose Jose Album 2;00002;Productora_Jose_Jose;41:35;imagenes/Jose_Jose/04.png;96
-05;Rocio Durcal Album 1;00003;Productora_Rocio_Durcal;40:10;imagenes/Rocio_Durcal/05.png;95
-06;Rocio Durcal Album 2;00003;Productora_Rocio_Durcal;41:31;imagenes/Rocio_Durcal/06.png;77
-07;Mana Album 1;00004;Productora_Mana;40:46;imagenes/Mana/07.png;91
-08;Mana Album 2;00004;Productora_Mana;41:09;imagenes/Mana/08.png;73
-09;Alejandro Sanz Album 1;00005;Productora_Alejandro_Sanz;40:30;imagenes/Alejandro_Sanz/09.png;82
-10;Alejandro Sanz Album 2;00005;Productora_Alejandro_Sanz;41:15;imagenes/Alejandro_Sanz/10.png;82
-11;Luis Miguel Album 1;00006;Productora_Luis_Miguel;40:05;imagenes/Luis_Miguel/11.png;82
-12;Luis Miguel Album 2;00006;Productora_Luis_Miguel;41:20;imagenes/Luis_Miguel/12.png;74
-13;Celia Cruz Album 1;00007;Productora_Celia_Cruz;40:24;imagenes/Celia_Cruz/13.png;78
-14;Celia Cruz Album 2;00007;Productora_Celia_Cruz;41:38;imagenes/Celia_Cruz/14.png;75
-15;Los Fabulosos Cadillacs Album 1;00008;Productora_Los_Fabulosos_Cadillacs;40:50;imagenes/Los_Fabulosos_Cadillacs/15.png;62
-16;Los Fabulosos Cadillacs Album 2;00008;Productora_Los_Fabulosos_Cadillacs;41:33;imagenes/Los_Fabulosos_Cadillacs/16.png;98
-17;Jesse y Joy Album 1;00009;Productora_Jesse_y_Joy;40:39;imagenes/Jesse_y_Joy/17.png;70
-18;Jesse y Joy Album 2;00009;Productora_Jesse_y_Joy;41:19;imagenes/Jesse_y_Joy/18.png;93
-19;Danny Ocean Album 1;00010;Productora_Danny_Ocean;40:55;imagenes/Danny_Ocean/19.png;96
-20;Danny Ocean Album 2;00010;Productora_Danny_Ocean;41:47;imagenes/Danny_Ocean/20.png;97
-21;Julieta Venegas Album 1;00011;Productora_Julieta_Venegas;40:19;imagenes/Julieta_Venegas/21.png;87
-22;Julieta Venegas Album 2;00011;Productora_Julieta_Venegas;41:21;imagenes/Julieta_Venegas/22.png;60
-23;Soda Stereo Album 1;00012;Productora_Soda_Stereo;40:09;imagenes/Soda_Stereo/23.png;87
-24;Soda Stereo Album 2;00012;Productora_Soda_Stereo;41:49;imagenes/Soda_Stereo/24.png;82
-25;Shakira Album 1;00013;Productora_Shakira;40:47;imagenes/Shakira/25.png;82
-26;Shakira Album 2;00013;Productora_Shakira;41:25;imagenes/Shakira/26.png;90
-27;Carlos Baute Album 1;00014;Productora_Carlos_Baute;40:15;imagenes/Carlos_Baute/27.png;83
-28;Carlos Baute Album 2;00014;Productora_Carlos_Baute;41:18;imagenes/Carlos_Baute/28.png;91
-29;Cafe Tacvba Album 1;00015;Productora_Cafe_Tacvba;40:40;imagenes/Cafe_Tacvba/29.png;84
-30;Cafe Tacvba Album 2;00015;Productora_Cafe_Tacvba;41:44;imagenes/Cafe_Tacvba/30.png;99
-31;Carlos Vives Album 1;00016;Productora_Carlos_Vives;40:05;imagenes/Carlos_Vives/31.png;93
-32;Carlos Vives Album 2;00016;Productora_Carlos_Vives;41:19;imagenes/Carlos_Vives/32.png;66
-33;Marc Anthony Album 1;00017;Productora_Marc_Anthony;40:22;imagenes/Marc_Anthony/33.png;67
-34;Marc Anthony Album 2;00017;Productora_Marc_Anthony;41:51;imagenes/Marc_Anthony/34.png;91
-35;Thalia Album 1;00018;Productora_Thalia;40:40;imagenes/Thalia/35.png;65
-36;Thalia Album 2;00018;Productora_Thalia;41:55;imagenes/Thalia/36.png;88
-37;Gloria Trevi Album 1;00019;Productora_Gloria_Trevi;40:33;imagenes/Gloria_Trevi/37.png;78
-38;Gloria Trevi Album 2;00019;Productora_Gloria_Trevi;41:46;imagenes/Gloria_Trevi/38.png;63
-39;Juanes Album 1;00020;Productora_Juanes;40:31;imagenes/Juanes/39.png;91
-40;Juanes Album 2;00020;Productora_Juanes;41:44;imagenes/Juanes/40.png;85
-41;Morat Album 1;00021;Productora_Morat;40:50;imagenes/Morat/41.png;98
-42;Morat Album 2;00021;Productora_Morat;41:53;imagenes/Morat/42.png;90
-43;Reik Album 1;00022;Productora_Reik;40:30;imagenes/Reik/43.png;63
-44;Reik Album 2;00022;Productora_Reik;41:48;imagenes/Reik/44.png;89
-45;Camila Album 1;00023;Productora_Camila;40:56;imagenes/Camila/45.png;93
-46;Camila Album 2;00023;Productora_Camila;41:23;imagenes/Camila/46.png;71
-47;Fonseca Album 1;00024;Productora_Fonseca;40:37;imagenes/Fonseca/47.png;96
-48;Fonseca Album 2;00024;Productora_Fonseca;41:19;imagenes/Fonseca/48.png;68
-49;Pablo Alboran Album 1;00025;Productora_Pablo_Alboran;40:45;imagenes/Pablo_Alboran/49.png;63
-50;Pablo Alboran Album 2;00025;Productora_Pablo_Alboran;41:46;imagenes/Pablo_Alboran/50.png;73
-51;Naty Peluso Album 1;00026;Productora_Naty_Peluso;40:01;imagenes/Naty_Peluso/51.png;91
-52;Naty Peluso Album 2;00026;Productora_Naty_Peluso;41:25;imagenes/Naty_Peluso/52.png;98
-53;Bad Bunny Album 1;00027;Productora_Bad_Bunny;40:48;imagenes/Bad_Bunny/53.png;63
-54;Bad Bunny Album 2;00027;Productora_Bad_Bunny;41:38;imagenes/Bad_Bunny/54.png;89
-55;Karol G Album 1;00028;Productora_Karol_G;40:20;imagenes/Karol_G/55.png;82
-56;Karol G Album 2;00028;Productora_Karol_G;41:05;imagenes/Karol_G/56.png;76
-57;Belanova Album 1;00029;Productora_Belanova;40:18;imagenes/Belanova/57.png;65
-58;Belanova Album 2;00029;Productora_Belanova;41:07;imagenes/Belanova/58.png;77
-59;Morena Mia Album 1;00030;Productora_Morena_Mia;40:00;imagenes/Morena_Mia/59.png;94
-60;Morena Mia Album 2;00030;Productora_Morena_Mia;41:31;imagenes/Morena_Mia/60.png;98
-61;Ventino Album 1;00031;Productora_Ventino;40:05;imagenes/Ventino/61.png;83
-62;Ventino Album 2;00031;Productora_Ventino;41:40;imagenes/Ventino/62.png;63
-63;Aitana Album 1;00032;Productora_Aitana;40:31;imagenes/Aitana/63.png;78
-64;Aitana Album 2;00032;Productora_Aitana;41:39;imagenes/Aitana/64.png;99
-65;Falling into you (1996);00033;Productora_Celine_Dion;40:29;imagenes/Celine_Dion/65.png;64
-66;Celine Dion Album 2;00033;Productora_Celine_Dion;41:44;imagenes/Celine_Dion/66.png;95
-67;Celine Dion Album 3;00033;Productora_Celine_Dion;42:16;imagenes/Celine_Dion/67.png;60
-68;Bon Jovi Album 1;00034;Productora_Bon_Jovi;40:34;imagenes/Bon_Jovi/68.png;65
-69;Bon Jovi Album 2;00034;Productora_Bon_Jovi;41:00;imagenes/Bon_Jovi/69.png;96
-70;Bon Jovi Album 3;00034;Productora_Bon_Jovi;42:34;imagenes/Bon_Jovi/70.png;91
-71;Bon Jovi Album 4;00034;Productora_Bon_Jovi;43:46;imagenes/Bon_Jovi/71.png;67
-72;Bon Jovi Album 5;00034;Productora_Bon_Jovi;44:36;imagenes/Bon_Jovi/72.png;93
-73;Diamond (2004);00035;Productora_Jaci_Velasquez;40:00;imagenes/Jaci_Velasquez/73.png;75
-74;Jaci Velásquez Album 2;00035;Productora_Jaci_Velasquez;41:06;imagenes/Jaci_Velasquez/74.png;98
-75;Lugar Secreto (2005);00036;Productora_Claudia_Lorelle;40:44;imagenes/Claudia_Lorelle/75.png;95
-76;Es Navidad;00036;Productora_Claudia_Lorelle;41:12;imagenes/Claudia_Lorelle/76.png;76
+01;Tigresa del Oriente Album 1;00001;Productora_Tigresa_del_Oriente;2014;40.44;imagenes/Tigresa_del_Oriente/01.png;74
+02;Tigresa del Oriente Album 2;00001;Productora_Tigresa_del_Oriente;2020;41.51;imagenes/Tigresa_del_Oriente/02.png;64
+03;Jose Jose Album 1;00002;Productora_Jose_Jose;1987;40.04;imagenes/Jose_Jose/03.png;71
+04;Jose Jose Album 2;00002;Productora_Jose_Jose;1998;41.35;imagenes/Jose_Jose/04.png;96
+05;Rocio Durcal Album 1;00003;Productora_Rocio_Durcal;1986;40.10;imagenes/Rocio_Durcal/05.png;95
+06;Rocio Durcal Album 2;00003;Productora_Rocio_Durcal;1989;41.31;imagenes/Rocio_Durcal/06.png;77
+07;Mana Album 1;00004;Productora_Mana;2001;40.46;imagenes/Mana/07.png;91
+08;Mana Album 2;00004;Productora_Mana;2006;41.09;imagenes/Mana/08.png;73
+09;Alejandro Sanz Album 1;00005;Productora_Alejandro_Sanz;1997;40.30;imagenes/Alejandro_Sanz/09.png;82
+10;Alejandro Sanz Album 2;00005;Productora_Alejandro_Sanz;2009;41.15;imagenes/Alejandro_Sanz/10.png;82
+11;Luis Miguel Album 1;00006;Productora_Luis_Miguel;1994;40.05;imagenes/Luis_Miguel/11.png;82
+12;Luis Miguel Album 2;00006;Productora_Luis_Miguel;2010;41.20;imagenes/Luis_Miguel/12.png;74
+13;Celia Cruz Album 1;00007;Productora_Celia_Cruz;1999;40.24;imagenes/Celia_Cruz/13.png;78
+14;Celia Cruz Album 2;00007;Productora_Celia_Cruz;2001;41.38;imagenes/Celia_Cruz/14.png;75
+15;Los Fabulosos Cadillacs Album 1;00008;Productora_Los_Fabulosos_Cadillacs;1992;40.50;imagenes/Los_Fabulosos_Cadillacs/15.png;62
+16;Los Fabulosos Cadillacs Album 2;00008;Productora_Los_Fabulosos_Cadillacs;1997;41.33;imagenes/Los_Fabulosos_Cadillacs/16.png;98
+17;Jesse y Joy Album 1;00009;Productora_Jesse_y_Joy;2011;40.39;imagenes/Jesse_y_Joy/17.png;70
+18;Jesse y Joy Album 2;00009;Productora_Jesse_y_Joy;2015;41.19;imagenes/Jesse_y_Joy/18.png;93
+19;Danny Ocean Album 1;00010;Productora_Danny_Ocean;2019;40.55;imagenes/Danny_Ocean/19.png;96
+20;Danny Ocean Album 2;00010;Productora_Danny_Ocean;2022;41.47;imagenes/Danny_Ocean/20.png;97
+21;Julieta Venegas Album 1;00011;Productora_Julieta_Venegas;2003;40.19;imagenes/Julieta_Venegas/21.png;87
+22;Julieta Venegas Album 2;00011;Productora_Julieta_Venegas;2007;41.21;imagenes/Julieta_Venegas/22.png;60
+23;Soda Stereo Album 1;00012;Productora_Soda_Stereo;1986;40.09;imagenes/Soda_Stereo/23.png;87
+24;Soda Stereo Album 2;00012;Productora_Soda_Stereo;1990;41.49;imagenes/Soda_Stereo/24.png;82
+25;Shakira Album 1;00013;Productora_Shakira;1998;40.47;imagenes/Shakira/25.png;82
+26;Shakira Album 2;00013;Productora_Shakira;2005;41.25;imagenes/Shakira/26.png;90
+27;Carlos Baute Album 1;00014;Productora_Carlos_Baute;2004;40.15;imagenes/Carlos_Baute/27.png;83
+28;Carlos Baute Album 2;00014;Productora_Carlos_Baute;2008;41.18;imagenes/Carlos_Baute/28.png;91
+29;Cafe Tacvba Album 1;00015;Productora_Cafe_Tacvba;1994;40.40;imagenes/Cafe_Tacvba/29.png;84
+30;Cafe Tacvba Album 2;00015;Productora_Cafe_Tacvba;1999;41.44;imagenes/Cafe_Tacvba/30.png;99
+31;Carlos Vives Album 1;00016;Productora_Carlos_Vives;1995;40.05;imagenes/Carlos_Vives/31.png;93
+32;Carlos Vives Album 2;00016;Productora_Carlos_Vives;2002;41.19;imagenes/Carlos_Vives/32.png;66
+33;Marc Anthony Album 1;00017;Productora_Marc_Anthony;1997;40.22;imagenes/Marc_Anthony/33.png;67
+34;Marc Anthony Album 2;00017;Productora_Marc_Anthony;2004;41.51;imagenes/Marc_Anthony/34.png;91
+35;Thalia Album 1;00018;Productora_Thalia;2000;40.40;imagenes/Thalia/35.png;65
+36;Thalia Album 2;00018;Productora_Thalia;2012;41.55;imagenes/Thalia/36.png;88
+37;Gloria Trevi Album 1;00019;Productora_Gloria_Trevi;1991;40.33;imagenes/Gloria_Trevi/37.png;78
+38;Gloria Trevi Album 2;00019;Productora_Gloria_Trevi;2011;41.46;imagenes/Gloria_Trevi/38.png;63
+39;Juanes Album 1;00020;Productora_Juanes;2000;40.31;imagenes/Juanes/39.png;91
+40;Juanes Album 2;00020;Productora_Juanes;2007;41.44;imagenes/Juanes/40.png;85
+41;Morat Album 1;00021;Productora_Morat;2016;40.50;imagenes/Morat/41.png;98
+42;Morat Album 2;00021;Productora_Morat;2021;41.53;imagenes/Morat/42.png;90
+43;Reik Album 1;00022;Productora_Reik;2005;40.30;imagenes/Reik/43.png;63
+44;Reik Album 2;00022;Productora_Reik;2011;41.48;imagenes/Reik/44.png;89
+45;Camila Album 1;00023;Productora_Camila;2006;40.56;imagenes/Camila/45.png;93
+46;Camila Album 2;00023;Productora_Camila;2014;41.23;imagenes/Camila/46.png;71
+47;Fonseca Album 1;00024;Productora_Fonseca;2002;40.37;imagenes/Fonseca/47.png;96
+48;Fonseca Album 2;00024;Productora_Fonseca;2011;41.19;imagenes/Fonseca/48.png;68
+49;Pablo Alboran Album 1;00025;Productora_Pablo_Alboran;2011;40.45;imagenes/Pablo_Alboran/49.png;63
+50;Pablo Alboran Album 2;00025;Productora_Pablo_Alboran;2014;41.46;imagenes/Pablo_Alboran/50.png;73
+51;Naty Peluso Album 1;00026;Productora_Naty_Peluso;2018;40.01;imagenes/Naty_Peluso/51.png;91
+52;Naty Peluso Album 2;00026;Productora_Naty_Peluso;2021;41.25;imagenes/Naty_Peluso/52.png;98
+53;Bad Bunny Album 1;00027;Productora_Bad_Bunny;2018;40.48;imagenes/Bad_Bunny/53.png;63
+54;Bad Bunny Album 2;00027;Productora_Bad_Bunny;2020;41.38;imagenes/Bad_Bunny/54.png;89
+55;Karol G Album 1;00028;Productora_Karol_G;2017;40.20;imagenes/Karol_G/55.png;82
+56;Karol G Album 2;00028;Productora_Karol_G;2021;41.05;imagenes/Karol_G/56.png;76
+57;Belanova Album 1;00029;Productora_Belanova;2003;40.18;imagenes/Belanova/57.png;65
+58;Belanova Album 2;00029;Productora_Belanova;2012;41.07;imagenes/Belanova/58.png;77
+59;Morena Mia Album 1;00030;Productora_Morena_Mia;2014;40.00;imagenes/Morena_Mia/59.png;94
+60;Morena Mia Album 2;00030;Productora_Morena_Mia;2019;41.31;imagenes/Morena_Mia/60.png;98
+61;Ventino Album 1;00031;Productora_Ventino;2016;40.05;imagenes/Ventino/61.png;83
+62;Ventino Album 2;00031;Productora_Ventino;2020;41.40;imagenes/Ventino/62.png;63
+63;Aitana Album 1;00032;Productora_Aitana;2018;40.31;imagenes/Aitana/63.png;78
+64;Aitana Album 2;00032;Productora_Aitana;2023;41.39;imagenes/Aitana/64.png;99
+65;Falling into you (1996);00033;Productora_Celine_Dion;1996;40.29;imagenes/Celine_Dion/65.png;64
+66;Celine Dion Album 2;00033;Productora_Celine_Dion;2002;41.44;imagenes/Celine_Dion/66.png;95
+67;Celine Dion Album 3;00033;Productora_Celine_Dion;2007;42.16;imagenes/Celine_Dion/67.png;60
+68;Bon Jovi Album 1;00034;Productora_Bon_Jovi;1986;40.34;imagenes/Bon_Jovi/68.png;65
+69;Bon Jovi Album 2;00034;Productora_Bon_Jovi;1992;41.00;imagenes/Bon_Jovi/69.png;96
+70;Bon Jovi Album 3;00034;Productora_Bon_Jovi;1998;42.34;imagenes/Bon_Jovi/70.png;91
+71;Bon Jovi Album 4;00034;Productora_Bon_Jovi;2005;43.46;imagenes/Bon_Jovi/71.png;67
+72;Bon Jovi Album 5;00034;Productora_Bon_Jovi;2012;44.36;imagenes/Bon_Jovi/72.png;93
+73;Diamond (2004);00035;Productora_Jaci_Velasquez;2004;40.00;imagenes/Jaci_Velasquez/73.png;75
+74;Jaci Velásquez Album 2;00035;Productora_Jaci_Velasquez;2011;41.06;imagenes/Jaci_Velasquez/74.png;98
+75;Lugar Secreto (2005);00036;Productora_Claudia_Lorelle;2005;40.44;imagenes/Claudia_Lorelle/75.png;95
+76;Es Navidad;00036;Productora_Claudia_Lorelle;2012;41.12;imagenes/Claudia_Lorelle/76.png;76

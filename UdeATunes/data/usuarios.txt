@@ -18,4 +18,4 @@ raul_gtr92;premium;Montevideo;Uruguay;19/01/2022;charlesIng
 marian_blossom;estandar;Bogota;Colombia;25/05/2023;no_aplica
 nico_devx;premium;Lima;Peru;07/07/2021;raul_gtr92
 paty_lunaria;estandar;Ciudad de Mexico;Mexico;04/04/2024;no_aplica
-aleja_cat95;premium;Pereira;Colombia;14/07/2021;fabian_code07
+aleja_cat95;premium;Pereira;Colombia;14/07/2021;no_aplica
