@@ -16,3 +16,22 @@
 00016;Carlos Vives;63;Colombia;3100000;18
 00017;Marc Anthony;56;Puerto Rico;2800000;14
 00018;Thalia;53;Mexico;2300000;38
+00019;Gloria Trevi;56;Mexico;1600000;52
+00020;Juanes;51;Colombia;4700000;28
+00021;Morat;28;Colombia;6000000;19
+00022;Reik;39;Mexico;5000000;24
+00023;Camila;39;Mexico;3200000;36
+00024;Fonseca;45;Colombia;1400000;60
+00025;Pablo Alboran;35;Espana;4300000;23
+00026;Naty Peluso;29;Argentina;2600000;31
+00027;Bad Bunny;30;Puerto Rico;85000000;2
+00028;Karol G;33;Colombia;62000000;3
+00029;Belanova;25;Mexico;1200000;59
+00030;Morena Mia;27;Venezuela;800000;75
+00031;Ventino;26;Colombia;900000;62
+00032;Aitana;25;Espana;7800000;11
+00033;Celine Dion;56;Canada;52000000;4
+00034;Bon Jovi;62;Estados Unidos;43000000;6
+00035;Jaci Velásquez;44;Estados Unidos;850000;72
+00036;Claudia Lorelle;27;Mexico;320000;81
+
